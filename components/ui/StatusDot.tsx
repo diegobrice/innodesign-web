@@ -1,3 +1,5 @@
+import styles from './StatusDot.module.css';
+
 export function StatusDot() {
-  return <span className="status-dot" aria-hidden="true" />;
+  return <span className={styles.dot} aria-hidden="true" />;
 }

@@ -1,0 +1,8 @@
+/* Pre-hide hero elements when JS is available — GSAP controls entrance via Animations.tsx */
+.js .hero__badge,
+.js .hero__title,
+.js .hero__subtitle,
+.js .hero__actions,
+.js .metric {
+  visibility: hidden;
+}

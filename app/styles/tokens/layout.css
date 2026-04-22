@@ -1,0 +1,5 @@
+/* Geometry tokens — radii and shared dimensions. */
+@theme inline {
+  --radius: 2px;
+  --radius-lg: 6px;
+}

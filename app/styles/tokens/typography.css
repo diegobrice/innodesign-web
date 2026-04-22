@@ -1,0 +1,5 @@
+/* Font tokens — resolved by next/font via CSS variable injection on <html>. */
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-jetbrains-mono);
+}

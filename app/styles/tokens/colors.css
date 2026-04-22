@@ -1,0 +1,25 @@
+/* Design tokens — Corporate AI Tech Noir palette.
+   Exposed as Tailwind utilities AND CSS custom properties. */
+@theme inline {
+  /* Surfaces */
+  --color-bg: #0a0a0b;
+  --color-bg-elevated: #0e0e10;
+  --color-bg-card: #111114;
+  --color-bg-inset: #070708;
+
+  /* Borders */
+  --color-border: rgba(255, 255, 255, 0.06);
+  --color-border-strong: rgba(255, 255, 255, 0.12);
+  --color-border-accent: rgba(198, 255, 61, 0.4);
+
+  /* Neon accent */
+  --color-accent: #c6ff3d;
+  --color-accent-dim: #a8db2f;
+  --color-accent-glow: rgba(198, 255, 61, 0.25);
+  --color-accent-glow-soft: rgba(198, 255, 61, 0.08);
+
+  /* Text */
+  --color-text: #f5f5f7;
+  --color-text-muted: #8a8a92;
+  --color-text-subtle: #54545c;
+}

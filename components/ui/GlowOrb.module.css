@@ -1,0 +1,27 @@
+.orb {
+  position: absolute;
+  left: 50%;
+  pointer-events: none;
+  border-radius: 9999px;
+}
+
+.hero {
+  top: -20%;
+  width: 900px;
+  height: 900px;
+  transform: translateX(-50%);
+  background: radial-gradient(circle, var(--color-accent-glow) 0%, transparent 55%);
+  opacity: 0.5;
+  filter: blur(20px);
+  z-index: 0;
+}
+
+.cta {
+  top: 50%;
+  width: 800px;
+  height: 800px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, var(--color-accent-glow) 0%, transparent 60%);
+  opacity: 0.35;
+  filter: blur(40px);
+}
