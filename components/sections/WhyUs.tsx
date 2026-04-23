@@ -1,9 +1,13 @@
 'use client';
 
 import { useRef } from 'react';
+import { Zap, Target, Lock, TrendingUp } from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
 import { differentiators } from '@/data/content';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { gsap, useGSAP } from '@/components/gsap-init';
+
+const iconMap: Record<string, LucideIcon> = { Zap, Target, Lock, TrendingUp };
 
 export function WhyUs() {
   const root = useRef<HTMLElement>(null);
@@ -41,15 +45,18 @@ export function WhyUs() {
         />
 
         <div className="why__grid grid grid-cols-4 max-lg:grid-cols-2 max-sm:grid-cols-1 gap-12">
-          {differentiators.map((d) => (
+          {differentiators.map((d) => {
+            const Icon = iconMap[d.icon];
+            return (
             <div key={d.title} className="why-item text-left relative pt-8 border-t border-border-strong">
-              <div className="inline-block uppercase font-mono text-[0.72rem] text-accent tracking-[0.12em] mb-5">
-                {d.icon}
+              <div className="inline-block mb-5 text-accent">
+                {Icon && <Icon size={22} strokeWidth={1.5} aria-hidden="true" />}
               </div>
               <h3 className="text-[1.2rem] mb-3 tracking-[-0.02em]">{d.title}</h3>
               <p className="text-text-muted text-[0.95rem] leading-[1.65]">{d.description}</p>
             </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

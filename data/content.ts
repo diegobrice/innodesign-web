@@ -102,26 +102,26 @@ export const cases = [
 
 export const differentiators = [
   {
-    icon: '⚡',
+    icon: 'Zap',
     title: 'Equipo senior',
     description: 'Sin juniors escondidos. Cada proyecto lo lidera un ingeniero con +5 años de experiencia.',
   },
   {
-    icon: '🎯',
+    icon: 'Target',
     title: 'Entregas predecibles',
     description: 'Sprints de 2 semanas con demos reales. Sin sorpresas en plazos ni presupuestos.',
   },
   {
-    icon: '🔒',
+    icon: 'Lock',
     title: 'Código que es tuyo',
     description: 'Repositorios, documentación y propiedad intelectual desde el día uno. Cero lock-in.',
   },
   {
-    icon: '📈',
+    icon: 'TrendingUp',
     title: 'Enfoque en negocio',
     description: 'Medimos el éxito en tus métricas, no en líneas de código.',
   },
-];
+] as const;
 
 export const testimonials = [
   {
