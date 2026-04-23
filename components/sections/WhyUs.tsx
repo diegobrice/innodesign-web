@@ -50,8 +50,8 @@ export function WhyUs() {
           {differentiators.map((d) => {
             const Icon = iconMap[d.icon];
             return (
-              <div key={d.title} className="why-item text-left relative pt-8 border-t border-border-strong">
-                <div className="inline-block mb-5 text-accent">
+              <div key={d.title} className="why-item group text-left relative pt-8 border-t border-border-strong transition-colors duration-200 hover:border-accent-dim">
+                <div className="inline-block mb-5 text-accent transition-transform duration-200 group-hover:scale-110">
                   {Icon && <Icon size={20} strokeWidth={1.5} aria-hidden="true" />}
                 </div>
                 <h3 className="text-[1.2rem] mb-3 tracking-[-0.02em] font-medium">{d.title}</h3>

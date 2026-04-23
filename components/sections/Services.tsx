@@ -57,9 +57,8 @@ export function Services() {
               </div>
               <h3 className="text-[1.4rem] mb-[14px] tracking-[-0.02em] font-medium">{s.title}</h3>
               <p className="text-text-muted text-[0.95rem] leading-[1.65] flex-1">{s.description}</p>
-              <div className="service-card__foot flex items-center justify-between pt-5 mt-5 border-t border-dashed border-border">
+              <div className="service-card__foot pt-5 mt-5 border-t border-dashed border-border">
                 <StatusChip tone="success">status: online</StatusChip>
-                <span className="font-mono text-[11px] text-accent tracking-[0.04em]">→ ver</span>
               </div>
             </article>
           ))}
