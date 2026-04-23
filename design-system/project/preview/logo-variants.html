@@ -1,0 +1,19 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Logo — Variants</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin:0; padding:20px;}
+  .row { display:grid; grid-template-columns: 1fr 1fr 140px; gap:12px;}
+  .tile { display:flex; align-items:center; justify-content:center; padding:22px; border-radius:4px; border:1px solid var(--id-border);}
+  .a { background:var(--id-bg-1);}
+  .b { background:#3BC2F2; border-color:#3BC2F2;}
+  .c { background:var(--id-bg-1); padding:14px;}
+  img { max-height:40px;}
+</style></head>
+<body>
+  <div class="row">
+    <div class="tile a"><img src="../assets/logo-wordmark.svg"></div>
+    <div class="tile b"><img src="../assets/logo-wordmark-dark.svg"></div>
+    <div class="tile c"><img src="../assets/logo-mark.svg" style="max-height:80px"></div>
+  </div>
+</body></html>

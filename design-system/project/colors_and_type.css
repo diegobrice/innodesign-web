@@ -1,0 +1,249 @@
+/* ============================================================
+   innodesign — Colors & Type
+   // CODE WITH INTENT
+   ============================================================ */
+
+/* ---------- Fonts ---------- */
+/* Primary UI / display: Inter (Google Fonts) */
+/* Monospace / code / HUD: JetBrains Mono (Google Fonts) */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap");
+
+:root {
+  /* ======================================================
+     COLOR — Base (dark-first)
+     ====================================================== */
+  --id-bg-0:            #0B0F14;   /* Negro profundo — page base        */
+  --id-bg-1:            #11161D;   /* Gris carbón  — panels / cards     */
+  --id-bg-2:            #1C222B;   /* Gris acero   — raised / hover     */
+  --id-fg-0:            #E6EDF3;   /* Blanco hielo — primary text        */
+  --id-fg-1:            #B6C2CF;   /* Secondary text                     */
+  --id-fg-2:            #7A8896;   /* Tertiary / meta                    */
+  --id-fg-3:            #4A5460;   /* Disabled / dim                     */
+
+  /* ======================================================
+     COLOR — Accents (use with moderation)
+     ====================================================== */
+  --id-accent:          #3BC2F2;   /* Azul primario — brand              */
+  --id-accent-hover:    #5ED0F5;
+  --id-accent-press:    #2AA7D4;
+  --id-accent-2:        #2563EB;   /* Azul eléctrico — deeper link       */
+  --id-accent-3:        #7C3AED;   /* Púrpura neón — rare, energy beat   */
+
+  /* ======================================================
+     COLOR — Semantic
+     ====================================================== */
+  --id-success:         #22D38E;
+  --id-warning:         #F0B43A;
+  --id-danger:          #FF5C6C;
+  --id-info:            var(--id-accent);
+
+  /* ======================================================
+     COLOR — Surfaces, borders, overlays
+     ====================================================== */
+  --id-surface:         var(--id-bg-1);
+  --id-surface-raised:  var(--id-bg-2);
+  --id-border:          #222B36;
+  --id-border-strong:   #2C3742;
+  --id-border-accent:   color-mix(in oklch, var(--id-accent) 55%, transparent);
+  --id-overlay:         rgba(6, 10, 14, 0.72);
+  --id-grid-line:       rgba(59, 194, 242, 0.08);
+  --id-scanline:        rgba(59, 194, 242, 0.04);
+
+  /* ======================================================
+     TYPE — Families
+     ====================================================== */
+  --id-font-sans:       "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --id-font-mono:       "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* ======================================================
+     TYPE — Scale (display / heading / body / mono)
+     1rem = 16px
+     ====================================================== */
+  --id-fs-display:      clamp(3.5rem, 8vw, 6.5rem);   /* hero word mark    */
+  --id-fs-h1:           clamp(2.25rem, 4vw, 3.25rem);
+  --id-fs-h2:           clamp(1.75rem, 3vw, 2.25rem);
+  --id-fs-h3:           1.5rem;
+  --id-fs-h4:           1.25rem;
+  --id-fs-body:         1rem;
+  --id-fs-small:        0.875rem;
+  --id-fs-micro:        0.75rem;            /* labels, captions            */
+  --id-fs-mono:         0.9375rem;
+
+  --id-lh-tight:        1.05;
+  --id-lh-snug:         1.2;
+  --id-lh-body:         1.55;
+  --id-lh-mono:         1.6;
+
+  --id-tracking-tight:  -0.02em;
+  --id-tracking-normal: 0;
+  --id-tracking-wide:   0.08em;
+  --id-tracking-label:  0.14em;              /* UPPERCASE section labels   */
+
+  --id-weight-light:    300;
+  --id-weight-regular:  400;
+  --id-weight-medium:   500;
+  --id-weight-bold:     700;
+  --id-weight-black:    900;
+
+  /* ======================================================
+     SPACING / RADII / SHADOW / MOTION
+     ====================================================== */
+  --id-space-1:  4px;
+  --id-space-2:  8px;
+  --id-space-3:  12px;
+  --id-space-4:  16px;
+  --id-space-5:  24px;
+  --id-space-6:  32px;
+  --id-space-7:  48px;
+  --id-space-8:  64px;
+  --id-space-9:  96px;
+
+  --id-radius-sm: 2px;
+  --id-radius-md: 4px;
+  --id-radius-lg: 8px;
+  --id-radius-xl: 12px;
+  --id-radius-pill: 999px;
+
+  /* Shadows stay subtle — depth comes from borders, not blur */
+  --id-shadow-sm: 0 1px 0 rgba(255,255,255,0.02) inset, 0 1px 2px rgba(0,0,0,0.4);
+  --id-shadow-md: 0 4px 16px rgba(0,0,0,0.45), 0 0 0 1px var(--id-border) inset;
+  --id-shadow-glow: 0 0 0 1px var(--id-border-accent), 0 0 24px -6px var(--id-accent);
+
+  --id-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --id-dur-fast: 120ms;
+  --id-dur-base: 180ms;
+  --id-dur-slow: 320ms;
+}
+
+/* ============================================================
+   SEMANTIC ELEMENT STYLES
+   ============================================================ */
+html, body {
+  background: var(--id-bg-0);
+  color: var(--id-fg-0);
+  font-family: var(--id-font-sans);
+  font-size: var(--id-fs-body);
+  line-height: var(--id-lh-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, .id-h1 {
+  font-family: var(--id-font-sans);
+  font-weight: var(--id-weight-bold);
+  font-size: var(--id-fs-h1);
+  line-height: var(--id-lh-tight);
+  letter-spacing: var(--id-tracking-tight);
+  color: var(--id-fg-0);
+  margin: 0;
+}
+h2, .id-h2 {
+  font-family: var(--id-font-sans);
+  font-weight: var(--id-weight-bold);
+  font-size: var(--id-fs-h2);
+  line-height: var(--id-lh-snug);
+  letter-spacing: var(--id-tracking-tight);
+  color: var(--id-fg-0);
+  margin: 0;
+}
+h3, .id-h3 {
+  font-weight: var(--id-weight-medium);
+  font-size: var(--id-fs-h3);
+  line-height: var(--id-lh-snug);
+  color: var(--id-fg-0);
+  margin: 0;
+}
+h4, .id-h4 {
+  font-weight: var(--id-weight-medium);
+  font-size: var(--id-fs-h4);
+  line-height: var(--id-lh-snug);
+  color: var(--id-fg-0);
+  margin: 0;
+}
+
+p, .id-body {
+  color: var(--id-fg-1);
+  font-size: var(--id-fs-body);
+  line-height: var(--id-lh-body);
+  margin: 0;
+}
+
+.id-lead {
+  color: var(--id-fg-0);
+  font-size: 1.125rem;
+  line-height: 1.5;
+  font-weight: var(--id-weight-regular);
+}
+
+small, .id-small { font-size: var(--id-fs-small); color: var(--id-fg-2); }
+
+/* Terminal-style label — used everywhere (01. PALETA, > STATUS:, etc.) */
+.id-label {
+  font-family: var(--id-font-mono);
+  font-size: var(--id-fs-micro);
+  font-weight: var(--id-weight-medium);
+  letter-spacing: var(--id-tracking-label);
+  text-transform: uppercase;
+  color: var(--id-fg-2);
+}
+.id-label--accent { color: var(--id-accent); }
+
+/* Terminal line — `> something` — the brand's narrative voice */
+.id-term {
+  font-family: var(--id-font-mono);
+  font-size: var(--id-fs-mono);
+  line-height: var(--id-lh-mono);
+  color: var(--id-fg-1);
+}
+.id-term::before {
+  content: "> ";
+  color: var(--id-accent);
+}
+
+code, kbd, samp, pre, .id-code {
+  font-family: var(--id-font-mono);
+  font-size: var(--id-fs-mono);
+  line-height: var(--id-lh-mono);
+  color: var(--id-fg-0);
+}
+
+a {
+  color: var(--id-accent);
+  text-decoration: none;
+  transition: color var(--id-dur-fast) var(--id-ease);
+}
+a:hover { color: var(--id-accent-hover); }
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--id-border);
+  margin: var(--id-space-6) 0;
+}
+
+/* Faint terminal/grid background (optional utility) */
+.id-bg-grid {
+  background-image:
+    linear-gradient(var(--id-grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--id-grid-line) 1px, transparent 1px);
+  background-size: 32px 32px;
+  background-position: -1px -1px;
+}
+
+/* Accent underline — used below titles, under hero headings */
+.id-accent-rule {
+  height: 2px;
+  width: 120px;
+  background: linear-gradient(90deg, var(--id-accent), var(--id-accent-3));
+}
+
+/* Terminal caret */
+.id-caret::after {
+  content: "_";
+  color: var(--id-accent);
+  font-weight: var(--id-weight-bold);
+  margin-left: 0.04em;
+  animation: id-blink 1.1s steps(2, end) infinite;
+}
+@keyframes id-blink {
+  50% { opacity: 0; }
+}

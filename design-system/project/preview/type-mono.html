@@ -1,0 +1,26 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Type — Mono</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin:0; padding:20px; }
+  .grid { display:grid; grid-template-columns: 1fr 1fr; gap:14px; }
+  .panel { background:var(--id-bg-1); border:1px solid var(--id-border); border-radius:4px; padding:14px; }
+  .eyebrow { font-family:var(--id-font-mono); font-size:10px; letter-spacing:.14em; color:var(--id-fg-2); text-transform:uppercase; margin-bottom:10px;}
+  .mono { font-family:var(--id-font-mono); font-size:14px; line-height:1.6; color:var(--id-fg-0); }
+  .mono .c { color:var(--id-accent); }
+  .mono .m { color:var(--id-fg-2); }
+  .mono .s { color:#22D38E; }
+  .label { font-family:var(--id-font-mono); font-size:10px; letter-spacing:.14em; color:var(--id-accent); text-transform:uppercase; display:block; margin-bottom:6px;}
+</style></head>
+<body>
+  <div class="grid">
+    <div class="panel">
+      <div class="eyebrow">JetBrains Mono · terminal</div>
+      <div class="mono"><span class="c">&gt;</span> status: <span class="s">building</span><br/><span class="c">&gt;</span> focused on performance<br/><span class="c">&gt;</span> shipping value, not just code</div>
+    </div>
+    <div class="panel">
+      <div class="eyebrow">JetBrains Mono · code</div>
+      <div class="mono"><span class="m">const</span> innodesign = {<br/>&nbsp;&nbsp;focus: <span class="s">"performance"</span>,<br/>&nbsp;&nbsp;code: <span class="s">"with_intent"</span>,<br/>};</div>
+    </div>
+  </div>
+</body></html>

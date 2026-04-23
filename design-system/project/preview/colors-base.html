@@ -1,0 +1,21 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Colors — Base</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin:0; padding:20px; }
+  .row { display:grid; grid-template-columns: repeat(4, 1fr); gap:12px; }
+  .swatch { background:var(--id-bg-1); border:1px solid var(--id-border); border-radius:4px; overflow:hidden; }
+  .chip { height:60px; border-bottom:1px solid var(--id-border); }
+  .meta { padding:8px 10px; }
+  .meta .name { font-family:var(--id-font-mono); font-size:11px; color:var(--id-fg-0); letter-spacing:.05em; }
+  .meta .hex { font-family:var(--id-font-mono); font-size:10px; color:var(--id-fg-2); margin-top:2px; }
+  .meta .label { font-family:var(--id-font-mono); font-size:9px; color:var(--id-fg-2); text-transform:uppercase; letter-spacing:.14em; margin-top:2px; }
+</style></head>
+<body>
+  <div class="row">
+    <div class="swatch"><div class="chip" style="background:#0B0F14"></div><div class="meta"><div class="name">--id-bg-0</div><div class="hex">#0B0F14</div><div class="label">Negro profundo</div></div></div>
+    <div class="swatch"><div class="chip" style="background:#11161D"></div><div class="meta"><div class="name">--id-bg-1</div><div class="hex">#11161D</div><div class="label">Gris carbón</div></div></div>
+    <div class="swatch"><div class="chip" style="background:#1C222B"></div><div class="meta"><div class="name">--id-bg-2</div><div class="hex">#1C222B</div><div class="label">Gris acero</div></div></div>
+    <div class="swatch"><div class="chip" style="background:#E6EDF3"></div><div class="meta"><div class="name">--id-fg-0</div><div class="hex">#E6EDF3</div><div class="label">Blanco hielo</div></div></div>
+  </div>
+</body></html>

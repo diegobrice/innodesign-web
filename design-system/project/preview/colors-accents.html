@@ -1,0 +1,24 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Colors — Accents</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin:0; padding:20px; }
+  .row { display:grid; grid-template-columns: repeat(3, 1fr); gap:12px; }
+  .swatch { background:var(--id-bg-1); border:1px solid var(--id-border); border-radius:4px; overflow:hidden; }
+  .chip { height:70px; border-bottom:1px solid var(--id-border); }
+  .meta { padding:8px 10px; }
+  .name { font-family:var(--id-font-mono); font-size:11px; color:var(--id-fg-0); letter-spacing:.05em; }
+  .hex { font-family:var(--id-font-mono); font-size:10px; color:var(--id-fg-2); margin-top:2px; }
+  .label { font-family:var(--id-font-mono); font-size:9px; color:var(--id-fg-2); text-transform:uppercase; letter-spacing:.14em; margin-top:2px; }
+  .rule { margin-top:14px; height:2px; background: linear-gradient(90deg, #3BC2F2, #7C3AED); border-radius:2px;}
+  .caption { margin-top:6px; font-family:var(--id-font-mono); font-size:9px; letter-spacing:.14em; color:var(--id-fg-2); text-transform:uppercase;}
+</style></head>
+<body>
+  <div class="row">
+    <div class="swatch"><div class="chip" style="background:#3BC2F2"></div><div class="meta"><div class="name">--id-accent</div><div class="hex">#3BC2F2</div><div class="label">Azul primario</div></div></div>
+    <div class="swatch"><div class="chip" style="background:#2563EB"></div><div class="meta"><div class="name">--id-accent-2</div><div class="hex">#2563EB</div><div class="label">Azul eléctrico</div></div></div>
+    <div class="swatch"><div class="chip" style="background:#7C3AED"></div><div class="meta"><div class="name">--id-accent-3</div><div class="hex">#7C3AED</div><div class="label">Púrpura neón</div></div></div>
+  </div>
+  <div class="rule"></div>
+  <div class="caption">Usar acentos con moderación</div>
+</body></html>

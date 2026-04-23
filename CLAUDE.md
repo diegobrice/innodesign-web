@@ -17,22 +17,26 @@ No test suite is configured.
 ## Stack
 
 - **Next.js 16** (App Router) · **React 19** · **TypeScript**
-- **Tailwind CSS v4** — configured entirely via `@theme inline` in `app/globals.css`; no `tailwind.config.js` file. Tokens become both CSS variables and Tailwind utilities automatically.
+- **Tailwind CSS v4** — no `tailwind.config.js`. Tokens live in `app/styles/tokens/` as `@theme inline` blocks and become both CSS variables and Tailwind utilities automatically.
 - **GSAP 3 + ScrollTrigger + `@gsap/react`** — each section owns its own animation. Sections are `'use client'` components that call `useGSAP(() => { ... }, { scope: rootRef })`, so selectors like `.service-card` only match within that section. Plugin registration and shared defaults live in `components/gsap-init.ts`.
 - **pnpm** (workspace file present).
 
 ## Architecture
 
-Single-page marketing site in Spanish (`<html lang="es">`). One route: `app/page.tsx` composes every section in order.
+Single-page marketing site in Spanish (`<html lang="es">`). One route: `app/page.tsx` composes sections in order: Navbar → Hero → Clients → Services → Process → Portfolio → WhyUs → Testimonials → FAQ → FinalCTA → Footer.
 
 ```
 app/
   layout.tsx          # fonts, metadata, JSON-LD schema, viewport
   page.tsx            # section composition
-  globals.css         # Tailwind v4 @theme tokens + base element styles
-  opengraph-image.tsx # dynamic OG image
-  icon.tsx            # dynamic favicon
+  globals.css         # imports all style partials (no tokens here)
+  opengraph-image.tsx # dynamic OG image (uses data/site.ts brand palette)
+  icon.tsx            # dynamic favicon (uses data/site.ts brand palette)
   robots.ts / sitemap.ts
+  styles/
+    tokens/           # colors.css, typography.css, layout.css — @theme inline blocks
+    base/             # reset.css, elements.css, effects.css, focus.css
+    components/       # section.css, service-card.css, case-card.css, container.css, footer-link.css
 
 components/
   gsap-init.ts        # registers useGSAP + ScrollTrigger, sets gsap.defaults,
@@ -42,13 +46,21 @@ components/
     Button.tsx + Button.module.css         # primary/ghost, optional size="lg"
     StatusDot.tsx + StatusDot.module.css   # pulsing neon dot
     MetricCounter.tsx                      # count-up number, scoped useGSAP + React state
+    SectionHeader.tsx                      # kicker + h2 + subtitle; uses global .section-header CSS
+    BrandMark.tsx + BrandMark.module.css   # decorative bracket-corner mark, size="sm|md"
+    GlowOrb.tsx + GlowOrb.module.css       # ambient accent glow background element
+    GridBackdrop.tsx + GridBackdrop.module.css  # faint grid overlay for hero/hero-like sections
+    icons/index.ts                         # re-exports from lucide-react (ArrowRight, Plus, Minus, Quote)
 
-data/content.ts       # all copy: metrics, clients, services, process, cases,
-                      # differentiators, testimonials, FAQs
+data/
+  content.ts   # all copy: metrics, clients, services, process, cases, differentiators, testimonials, FAQs
+  site.ts      # site URL, name, description; brand palette as JS constants (used in edge-runtime image routes)
 ```
 
 **Content changes** → `data/content.ts` only.
-**Style/token changes** → `app/globals.css` `@theme inline` block; component-scoped styles live alongside their component as `*.module.css`.
+**Site metadata** → `data/site.ts` (also the source of truth for brand hex values in `opengraph-image.tsx` and `icon.tsx`, where CSS variables can't be resolved).
+**Token/style changes** → `app/styles/tokens/colors.css` for palette, `typography.css` for type scale, `layout.css` for spacing; component-scoped styles live alongside their component as `*.module.css`.
+**Shared CSS component classes** (`.section-header`, `.section-kicker`, `.section-title`, `.section-subtitle`, `.service-card`, etc.) live in `app/styles/components/` — these are global classes, not Tailwind utilities.
 **Animation changes** → the `useGSAP()` call inside the relevant section component. Import `{ gsap, useGSAP }` (and `ScrollTrigger` if needed) from `@/components/gsap-init`.
 
 ### Animation pattern
@@ -77,17 +89,29 @@ export function Services() {
 
 Theme: "Corporate AI Tech Noir" — near-black surfaces with a neon lime accent.
 
-Key tokens (defined in `globals.css`):
+Key tokens (defined in `app/styles/tokens/colors.css`):
 
-| Token | Value |
-|---|---|
-| `--color-bg` | `#0a0a0b` |
-| `--color-accent` | `#c6ff3d` |
-| `--color-text` | `#f5f5f7` |
-| `--color-text-muted` | `#8a8a92` |
-| `--font-sans` | Geist |
-| `--font-mono` | JetBrains Mono |
+| Token | Value | Notes |
+|---|---|---|
+| `--color-bg` | `#0a0a0b` | page canvas |
+| `--color-bg-elevated` | `#0e0e10` | |
+| `--color-bg-card` | `#111114` | card surfaces |
+| `--color-accent` | `#c6ff3d` | neon lime — primary accent |
+| `--color-accent-dim` | `#a8db2f` | |
+| `--color-accent-glow` | `rgba(198,255,61,0.25)` | |
+| `--color-border` | `rgba(255,255,255,0.06)` | |
+| `--color-border-strong` | `rgba(255,255,255,0.12)` | |
+| `--color-border-accent` | `rgba(198,255,61,0.4)` | |
+| `--color-text` | `#f5f5f7` | 17.6:1 contrast |
+| `--color-text-muted` | `#8a8a92` | 5.6:1 — secondary body |
+| `--color-text-subtle` | `#7c7c85` | 4.6:1 — tertiary/meta |
+| `--font-sans` | Geist | |
+| `--font-mono` | JetBrains Mono | |
 
-Buttons are a React component (`components/ui/Button.tsx`) with styles in `Button.module.css` — use `<Button href="..." variant="primary|ghost" size="lg">` rather than raw `.btn` classes. Section layout is composed inline via Tailwind utilities in each section file (no shared `.section-inner` utility exists).
+Buttons → `<Button href="..." variant="primary|ghost" size="lg">` (never raw CSS classes).
+Section headers → `<SectionHeader kicker="..." title={<>…<em>word</em></>} subtitle="…" />` which renders the global `.section-header` / `.section-kicker` / `.section-title` layout.
+Icons → import from `@/components/ui/icons` (lucide-react re-export; 20px, 1.5px stroke, currentColor).
 
-The global `em` element is restyled as the neon accent emphasis (`color: var(--color-accent)`, `font-style: normal`) — use `<em>` inside headings to highlight a word, as in the Hero title.
+The global `em` element is restyled as neon accent emphasis (`color: var(--color-accent)`, `font-style: normal`) — use `<em>` inside headings to highlight a word.
+
+The `design-system/` folder contains a brand reference document (separate from the live codebase). Note: it describes cyan (`#3BC2F2`) as the accent — the production site uses neon lime (`#c6ff3d`) instead. Use the token values in `app/styles/tokens/` as the source of truth.

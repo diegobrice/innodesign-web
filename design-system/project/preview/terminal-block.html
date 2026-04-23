@@ -1,0 +1,28 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Terminal Block</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin:0; padding:22px;}
+  .term { background:var(--id-bg-1); border:1px solid var(--id-border); border-radius:4px; overflow:hidden;}
+  .head { display:flex; align-items:center; gap:6px; padding:10px 12px; background:var(--id-bg-2); border-bottom:1px solid var(--id-border);}
+  .dot { width:10px; height:10px; border-radius:999px;}
+  .title { font-family:var(--id-font-mono); font-size:11px; color:var(--id-fg-2); margin-left:10px;}
+  .body { padding:14px; font-family:var(--id-font-mono); font-size:13px; line-height:1.7;}
+  .prompt { color:var(--id-accent); }
+  .ok { color:#22D38E; }
+  .m { color:var(--id-fg-2);}
+  .caret { color:var(--id-accent); animation: id-blink 1.1s steps(2) infinite;}
+</style></head>
+<body>
+  <div class="term">
+    <div class="head"><span class="dot" style="background:#FF5F57"></span><span class="dot" style="background:#FEBC2E"></span><span class="dot" style="background:#28C840"></span><span class="title">~/innodesign · build</span></div>
+    <div class="body">
+      <div><span class="prompt">&gt;</span> innodesign build</div>
+      <div><span class="m">Analyzing project...</span></div>
+      <div><span class="m">Building modules...</span></div>
+      <div><span class="m">Optimizing...</span></div>
+      <div><span class="ok">✓ Done. (0.94s)</span></div>
+      <div><span class="prompt">&gt;</span> Deployed successfully <span class="caret">_</span></div>
+    </div>
+  </div>
+</body></html>

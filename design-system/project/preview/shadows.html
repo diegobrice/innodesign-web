@@ -1,0 +1,19 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Shadow & Elevation</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin:0; padding:28px; }
+  .row { display:grid; grid-template-columns: repeat(3, 1fr); gap:18px;}
+  .card { background:var(--id-bg-1); border:1px solid var(--id-border); border-radius:4px; height:84px; padding:12px; display:flex; flex-direction:column; justify-content:space-between;}
+  .card.md { box-shadow: 0 4px 16px rgba(0,0,0,0.45), 0 0 0 1px var(--id-border) inset;}
+  .card.glow { box-shadow: 0 0 0 1px var(--id-border-accent), 0 0 24px -6px var(--id-accent); border-color: var(--id-border-accent);}
+  .tag { font-family:var(--id-font-mono); font-size:10px; color:var(--id-fg-2); letter-spacing:.1em; text-transform:uppercase;}
+  .name { color:var(--id-fg-0); font-family:var(--id-font-mono); font-size:11px;}
+</style></head>
+<body>
+  <div class="row">
+    <div class="card"><span class="tag">resting</span><span class="name">--id-shadow-sm</span></div>
+    <div class="card md"><span class="tag">raised</span><span class="name">--id-shadow-md</span></div>
+    <div class="card glow"><span class="tag">focused · one per view</span><span class="name" style="color:var(--id-accent)">--id-shadow-glow</span></div>
+  </div>
+</body></html>

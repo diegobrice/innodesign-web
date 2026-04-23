@@ -1,0 +1,24 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Status Chips</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin:0; padding:24px;}
+  .row { display:flex; gap:10px; flex-wrap:wrap;}
+  .chip { display:inline-flex; align-items:center; gap:8px; padding:5px 10px; border-radius:999px; background:var(--id-bg-1); border:1px solid var(--id-border); font-family:var(--id-font-mono); font-size:11px; color:var(--id-fg-1);}
+  .dot { width:7px; height:7px; border-radius:999px;}
+  .live { color:#22D38E;}
+  .warn { color:#F0B43A;}
+  .err { color:#FF5C6C;}
+  .info { color:var(--id-accent);}
+</style></head>
+<body>
+  <div class="row">
+    <span class="chip live"><span class="dot" style="background:#22D38E; box-shadow:0 0 8px #22D38E"></span>status: online</span>
+    <span class="chip info"><span class="dot" style="background:var(--id-accent)"></span>building</span>
+    <span class="chip warn"><span class="dot" style="background:#F0B43A"></span>degraded</span>
+    <span class="chip err"><span class="dot" style="background:#FF5C6C"></span>failed</span>
+    <span class="chip"><span class="dot" style="background:#7A8896"></span>idle</span>
+    <span class="chip info">v1.0.3</span>
+    <span class="chip">uptime 7d 14h 32m</span>
+  </div>
+</body></html>

@@ -1,0 +1,21 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Bracket Frame</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin:0; padding:24px;}
+  .row { display:grid; grid-template-columns: repeat(3,1fr); gap:16px;}
+  .box { position:relative; height:120px; display:flex; align-items:center; justify-content:center; color:var(--id-fg-2); font-family:var(--id-font-mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase;}
+  .c { position:absolute; width:14px; height:14px; border:2px solid var(--id-accent);}
+  .c1 { top:0; left:0; border-right:0; border-bottom:0;}
+  .c2 { top:0; right:0; border-left:0; border-bottom:0;}
+  .c3 { bottom:0; left:0; border-right:0; border-top:0;}
+  .c4 { bottom:0; right:0; border-left:0; border-top:0;}
+  .b { background:var(--id-bg-1);}
+</style></head>
+<body>
+  <div class="row">
+    <div class="box b"><span class="c c1"></span><span class="c c2"></span><span class="c c3"></span><span class="c c4"></span>empty · placeholder</div>
+    <div class="box b"><span class="c c1"></span><span class="c c2"></span><span class="c c3"></span><span class="c c4"></span><img src="../assets/logo-mark.svg" style="height:60px"></div>
+    <div class="box b"><span class="c c1"></span><span class="c c2"></span><span class="c c3"></span><span class="c c4"></span>upload area</div>
+  </div>
+</body></html>

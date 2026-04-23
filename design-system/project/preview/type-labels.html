@@ -1,0 +1,23 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Type — Labels</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin:0; padding:22px; }
+  .stack { display:flex; flex-direction:column; gap:18px; }
+  .demo { display:flex; gap:16px; align-items:baseline; }
+  .label { font-family:var(--id-font-mono); font-size:11px; letter-spacing:.14em; color:var(--id-fg-2); text-transform:uppercase; min-width:170px;}
+  .accent { color:var(--id-accent) !important; }
+  .target { color:var(--id-fg-0); font-family:var(--id-font-sans); font-weight:500; font-size:20px; }
+  .rule { height:1px; background:var(--id-border); }
+</style></head>
+<body>
+  <div class="stack">
+    <div class="demo"><span class="label">01. LOGOTIPO PRINCIPAL</span><span class="target">Section eyebrow</span></div>
+    <div class="rule"></div>
+    <div class="demo"><span class="label accent">04. PALETA DE COLORES</span><span class="target">Accented eyebrow</span></div>
+    <div class="rule"></div>
+    <div class="demo"><span class="label">status: online</span><span class="target" style="font-family:var(--id-font-mono); font-size:14px; color:#22D38E;">● live</span></div>
+    <div class="rule"></div>
+    <div class="demo"><span class="label">uptime 7d 14h 32m</span><span class="target" style="font-family:var(--id-font-mono); font-size:14px;">v1.0.3</span></div>
+  </div>
+</body></html>

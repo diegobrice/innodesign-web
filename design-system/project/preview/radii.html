@@ -1,0 +1,19 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Radii</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin:0; padding:22px; }
+  .row { display:grid; grid-template-columns: repeat(5, 1fr); gap:14px;}
+  .tile { background:var(--id-bg-1); border:1px solid var(--id-border); height:72px; display:flex; align-items:end; padding:8px;}
+  .tag { font-family:var(--id-font-mono); font-size:10px; color:var(--id-fg-2); letter-spacing:.1em;}
+  .px { color:var(--id-fg-0); }
+</style></head>
+<body>
+  <div class="row">
+    <div class="tile" style="border-radius:2px"><div><div class="tag">sm</div><div class="tag px">2px</div></div></div>
+    <div class="tile" style="border-radius:4px"><div><div class="tag">md</div><div class="tag px">4px</div></div></div>
+    <div class="tile" style="border-radius:8px"><div><div class="tag">lg</div><div class="tag px">8px</div></div></div>
+    <div class="tile" style="border-radius:12px"><div><div class="tag">xl</div><div class="tag px">12px</div></div></div>
+    <div class="tile" style="border-radius:999px"><div><div class="tag">pill</div><div class="tag px">999px</div></div></div>
+  </div>
+</body></html>

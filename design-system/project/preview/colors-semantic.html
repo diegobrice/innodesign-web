@@ -1,0 +1,20 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Colors — Semantic</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin:0; padding:20px; }
+  .row { display:grid; grid-template-columns: repeat(4, 1fr); gap:12px; }
+  .swatch { background:var(--id-bg-1); border:1px solid var(--id-border); border-radius:4px; padding:14px; display:flex; flex-direction:column; gap:10px;}
+  .dot { width:18px; height:18px; border-radius:999px; }
+  .name { font-family:var(--id-font-mono); font-size:11px; color:var(--id-fg-0); letter-spacing:.05em; }
+  .hex { font-family:var(--id-font-mono); font-size:10px; color:var(--id-fg-2); }
+  .use { font-family:var(--id-font-mono); font-size:9px; color:var(--id-fg-2); text-transform:uppercase; letter-spacing:.14em; }
+</style></head>
+<body>
+  <div class="row">
+    <div class="swatch"><div class="dot" style="background:#22D38E"></div><div><div class="name">success</div><div class="hex">#22D38E</div></div><div class="use">✓ deploy ok</div></div>
+    <div class="swatch"><div class="dot" style="background:#F0B43A"></div><div><div class="name">warning</div><div class="hex">#F0B43A</div></div><div class="use">! degraded</div></div>
+    <div class="swatch"><div class="dot" style="background:#FF5C6C"></div><div><div class="name">danger</div><div class="hex">#FF5C6C</div></div><div class="use">✗ failed</div></div>
+    <div class="swatch"><div class="dot" style="background:#3BC2F2"></div><div><div class="name">info</div><div class="hex">#3BC2F2</div></div><div class="use">→ status</div></div>
+  </div>
+</body></html>

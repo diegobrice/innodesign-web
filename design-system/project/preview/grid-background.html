@@ -1,0 +1,19 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Grid Background</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin:0; padding:0; height:100%;}
+  .bg { position:relative; height:180px; background:
+    linear-gradient(rgba(59,194,242,0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59,194,242,0.08) 1px, transparent 1px),
+    #0B0F14;
+    background-size: 32px 32px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  h1 { font-family:var(--id-font-sans); font-weight:700; font-size:42px; letter-spacing:-0.03em; color:var(--id-fg-0); margin:0;}
+  h1 span { color:var(--id-accent);}
+  .caret { color:var(--id-accent); animation: id-blink 1.1s steps(2) infinite;}
+</style></head>
+<body>
+  <div class="bg"><h1>inno<span>design</span><span class="caret">_</span></h1></div>
+</body></html>
