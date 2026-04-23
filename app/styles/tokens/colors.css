@@ -1,25 +1,38 @@
-/* Design tokens — Corporate AI Tech Noir palette.
+/* Design tokens — innodesign "code with intent" palette (cyan, dark-first).
    Exposed as Tailwind utilities AND CSS custom properties. */
 @theme inline {
   /* Surfaces */
-  --color-bg: #0a0a0b;
-  --color-bg-elevated: #0e0e10;
-  --color-bg-card: #111114;
-  --color-bg-inset: #070708;
+  --color-bg: #0B0F14;           /* Negro profundo — page base */
+  --color-bg-elevated: #11161D;  /* Gris carbón — panels / cards */
+  --color-bg-card: #11161D;
+  --color-bg-inset: #1C222B;     /* Gris acero — raised / hover */
 
   /* Borders */
-  --color-border: rgba(255, 255, 255, 0.06);
-  --color-border-strong: rgba(255, 255, 255, 0.12);
-  --color-border-accent: rgba(198, 255, 61, 0.4);
+  --color-border: #222B36;
+  --color-border-strong: #2C3742;
+  --color-border-accent: color-mix(in oklch, #3BC2F2 55%, transparent);
 
-  /* Neon accent */
-  --color-accent: #c6ff3d;
-  --color-accent-dim: #a8db2f;
-  --color-accent-glow: rgba(198, 255, 61, 0.25);
-  --color-accent-glow-soft: rgba(198, 255, 61, 0.08);
+  /* Cyan accent (primary) */
+  --color-accent: #3BC2F2;
+  --color-accent-hover: #5ED0F5;
+  --color-accent-dim: #2AA7D4;
+  --color-accent-2: #2563EB;     /* Azul eléctrico — deeper */
+  --color-accent-3: #7C3AED;     /* Púrpura — gradients only */
+  --color-accent-glow: rgba(59, 194, 242, 0.25);
+  --color-accent-glow-soft: rgba(59, 194, 242, 0.08);
 
-  /* Text — all three pass WCAG AA (≥ 4.5:1) on --color-bg */
-  --color-text: #f5f5f7;        /* 17.6:1 */
-  --color-text-muted: #8a8a92;  /* 5.6:1  — secondary body copy */
-  --color-text-subtle: #7c7c85; /* 4.6:1  — tertiary meta, labels (was #54545c, 2.4:1) */
+  /* Semantic */
+  --color-success: #22D38E;
+  --color-warning: #F0B43A;
+  --color-danger: #FF5C6C;
+
+  /* Text — all pass WCAG AA on --color-bg */
+  --color-text: #E6EDF3;         /* 15.9:1 */
+  --color-text-muted: #B6C2CF;   /* 10.4:1 — secondary body */
+  --color-text-subtle: #7A8896;  /* 4.8:1  — tertiary meta, labels */
+
+  /* Grid overlay + scanline (tinted cyan) */
+  --color-grid-line: rgba(59, 194, 242, 0.08);
+  --color-scanline: rgba(59, 194, 242, 0.04);
+  --color-overlay: rgba(6, 10, 14, 0.72);
 }

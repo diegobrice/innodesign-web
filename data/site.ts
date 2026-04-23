@@ -17,11 +17,13 @@ export const site = {
  * Keep in sync with the `@theme inline` block.
  */
 export const brand = {
-  bg: '#0a0a0b',
-  accent: '#c6ff3d',
-  accentGlow: 'rgba(198,255,61,0.2)',
-  accentGridLine: 'rgba(198,255,61,0.05)',
-  text: '#f5f5f7',
-  textMuted: '#8a8a92',
-  borderStrong: 'rgba(255,255,255,0.12)',
+  bg: '#0B0F14',
+  accent: '#3BC2F2',
+  accentDeeper: '#2563EB',
+  accentPurple: '#7C3AED',
+  accentGlow: 'rgba(59,194,242,0.2)',
+  accentGridLine: 'rgba(59,194,242,0.08)',
+  text: '#E6EDF3',
+  textMuted: '#B6C2CF',
+  borderStrong: '#2C3742',
 } as const;

@@ -1,0 +1,76 @@
+/* ============================================================
+   innodesign — utility classes from the brand kit.
+   Named without the `id-` prefix so they read naturally in JSX.
+   ============================================================ */
+
+@layer components {
+  /* Terminal-style eyebrow label — mono UPPERCASE, wide tracking.
+     Used for section labels ("01. SERVICIOS"), metadata, status lines. */
+  .label-mono {
+    font-family: var(--font-mono);
+    font-size: var(--text-micro);
+    font-weight: var(--font-weight-medium);
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--color-text-subtle);
+  }
+
+  .label-mono--accent {
+    color: var(--color-accent);
+  }
+
+  /* Terminal line — prefix `> ` in accent, body in default text. */
+  .terminal-line {
+    font-family: var(--font-mono);
+    font-size: var(--text-mono);
+    line-height: var(--leading-mono);
+    color: var(--color-text-muted);
+  }
+
+  .terminal-line::before {
+    content: "> ";
+    color: var(--color-accent);
+  }
+
+  /* Blinking caret signature — appears after wordmark / headlines. */
+  .caret-blink {
+    display: inline-block;
+    color: var(--color-accent);
+    font-weight: var(--font-weight-bold);
+    margin-left: 0.04em;
+    animation: caret-blink 1.1s steps(2, end) infinite;
+  }
+
+  @keyframes caret-blink {
+    50% {
+      opacity: 0;
+    }
+  }
+
+  /* Graph-paper grid — 32px cyan lines at low opacity.
+     Apply to hero sections and large empty panels. */
+  .bg-grid {
+    background-image:
+      linear-gradient(var(--color-grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--color-grid-line) 1px, transparent 1px);
+    background-size: 32px 32px;
+    background-position: -1px -1px;
+  }
+
+  /* Accent rule — 2px gradient line cyan → púrpura. Decorative only. */
+  .accent-rule {
+    display: block;
+    height: 2px;
+    width: 120px;
+    background: linear-gradient(90deg, var(--color-accent), var(--color-accent-3));
+    border: 0;
+    margin: 0;
+  }
+}
+
+/* Respect reduced motion — disable the blinking caret. */
+@media (prefers-reduced-motion: reduce) {
+  .caret-blink {
+    animation: none;
+  }
+}

@@ -39,28 +39,30 @@ export function Portfolio() {
     <section ref={root} id="portfolio">
       <div className="container">
         <SectionHeader
-          kicker="[ 03 ] · Portfolio"
+          kicker="Portfolio"
+          number="03"
           title="Casos de éxito recientes"
           subtitle="Resultados medibles para clientes de distintos sectores."
+          accentRule
         />
 
         <div className="portfolio__grid grid grid-cols-2 gap-6 max-lg:grid-cols-1">
           {cases.map((c) => (
             <article
               key={c.id}
-              className="case-card p-6 bg-bg-card border border-border rounded-[var(--radius-lg)] hover:border-border-strong"
+              className="case-card p-6 bg-bg-card border border-border rounded-[var(--radius)] transition-[border-color,background-color] duration-200 hover:border-border-strong hover:bg-bg-inset"
             >
               <div
-                className="case-card__preview w-full h-[240px] border border-border rounded-[var(--radius)] mb-6"
+                className="case-card__preview w-full h-[240px] border border-border rounded-[var(--radius-sm)] mb-6 bg-grid"
                 aria-hidden="true"
               />
-              <span className="inline-flex items-center rounded-full uppercase px-[10px] py-[5px] bg-transparent border border-border-strong font-mono text-[0.68rem] text-text-muted tracking-[0.1em] mb-[14px]">
+              <span className="inline-flex items-center rounded-pill uppercase px-[10px] py-[4px] bg-bg border border-border font-mono text-[10px] text-text-subtle tracking-[0.14em] mb-[14px]">
                 {c.tag}
               </span>
               <h3 className="text-[1.25rem] font-medium mb-2 tracking-[-0.02em]">{c.title}</h3>
               <p className="text-text-muted mb-5 text-[0.95rem]">{c.description}</p>
               <strong className="inline-flex items-center gap-2 font-mono text-[0.95rem] text-accent font-medium tracking-[-0.01em]">
-                <ArrowRight className="opacity-60" />
+                <ArrowRight className="opacity-60" size={18} strokeWidth={1.5} />
                 {c.metric}
               </strong>
             </article>
@@ -68,8 +70,8 @@ export function Portfolio() {
         </div>
 
         <div className="text-center mt-16">
-          <Button href="#contacto" variant="ghost">
-            Ver todos los proyectos
+          <Button href="#contacto" variant="ghost" prefix>
+            ver todos los proyectos
           </Button>
         </div>
       </div>

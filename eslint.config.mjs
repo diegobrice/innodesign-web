@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Reference brand kit — not part of the built app.
+    "design-system/**",
   ]),
 ]);
 

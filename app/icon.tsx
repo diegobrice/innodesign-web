@@ -6,47 +6,32 @@ export const size = { width: 32, height: 32 };
 export const contentType = 'image/png';
 
 /**
- * Favicon mirroring the `BrandMark` component (ring + inner dot).
- * Proportions match `components/ui/BrandMark.module.css` (inner ≈ 66% of ring).
+ * Favicon — bracket-framed `id_` glyph matching the brand mark SVG.
+ * Rendered via ImageResponse so the Inter-like weight and cyan underscore
+ * are preserved across browsers and rasterized for the tab.
  */
 export default function Icon() {
-  const ring = 24;
-  const inner = 16;
-  const border = 2;
-
   return new ImageResponse(
     (
       <div
         style={{
           width: size.width,
           height: size.height,
-          background: brand.bg,
+          background: '#11161D',
+          borderRadius: 7,
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          borderRadius: '50%',
+          fontFamily: 'ui-sans-serif, system-ui, sans-serif',
+          fontWeight: 700,
+          fontSize: 17,
+          letterSpacing: '-0.04em',
+          color: brand.text,
+          border: `1px solid ${brand.borderStrong}`,
         }}
       >
-        <div
-          style={{
-            width: ring,
-            height: ring,
-            borderRadius: '50%',
-            border: `${border}px solid ${brand.accent}`,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
-        >
-          <div
-            style={{
-              width: inner,
-              height: inner,
-              borderRadius: '50%',
-              background: brand.accent,
-            }}
-          />
-        </div>
+        <span>id</span>
+        <span style={{ color: brand.accent }}>_</span>
       </div>
     ),
     { ...size }

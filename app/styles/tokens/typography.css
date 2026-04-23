@@ -1,5 +1,37 @@
 /* Font tokens — resolved by next/font via CSS variable injection on <html>. */
 @theme inline {
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-inter);
   --font-mono: var(--font-jetbrains-mono);
+
+  /* Type scale (1rem = 16px) */
+  --text-display: clamp(3.5rem, 8vw, 6.5rem);   /* hero word mark */
+  --text-h1: clamp(2.25rem, 4vw, 3.25rem);
+  --text-h2: clamp(1.75rem, 3vw, 2.25rem);
+  --text-h3: 1.5rem;
+  --text-h4: 1.25rem;
+  --text-body: 1rem;
+  --text-small: 0.875rem;
+  --text-micro: 0.75rem;
+  --text-mono: 0.9375rem;
+
+  /* Line heights */
+  --leading-tight: 1.05;
+  --leading-snug: 1.2;
+  --leading-body: 1.55;
+  --leading-mono: 1.6;
+
+  /* Letter spacing */
+  --tracking-tight: -0.02em;
+  --tracking-tighter: -0.035em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.08em;
+  --tracking-label: 0.14em;   /* UPPERCASE section labels */
+
+  /* Weights */
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-black: 900;
 }

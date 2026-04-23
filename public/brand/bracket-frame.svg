@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none" stroke="#3BC2F2" stroke-width="2" stroke-linecap="square">
+  
+  <polyline points="4,24 4,4 24,4"></polyline>
+  <polyline points="96,4 116,4 116,24"></polyline>
+  <polyline points="116,96 116,116 96,116"></polyline>
+  <polyline points="24,116 4,116 4,96"></polyline>
+</svg>

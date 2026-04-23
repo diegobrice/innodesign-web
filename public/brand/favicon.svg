@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" fill="none">
+  <rect x="0" y="0" width="160" height="160" rx="36" fill="#11161D"></rect>
+  <rect x="0.5" y="0.5" width="159" height="159" rx="35.5" fill="none" stroke="#2C3742"></rect>
+  <g font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-weight="700" font-size="80" letter-spacing="-0.04em">
+    <text x="42" y="100" fill="#E6EDF3">id</text>
+    <text x="102" y="100" fill="#3BC2F2">_</text>
+  </g>
+</svg>

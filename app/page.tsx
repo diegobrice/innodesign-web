@@ -8,6 +8,7 @@ import { WhyUs } from '@/components/sections/WhyUs';
 import { Testimonials } from '@/components/sections/Testimonials';
 import { FAQ } from '@/components/sections/FAQ';
 import { FinalCTA } from '@/components/sections/FinalCTA';
+import { SystemShowcase } from '@/components/sections/SystemShowcase';
 import { Footer } from '@/components/sections/Footer';
 
 export default function Home() {
@@ -24,6 +25,7 @@ export default function Home() {
         <Testimonials />
         <FAQ />
         <FinalCTA />
+        <SystemShowcase />
       </main>
       <Footer />
     </>

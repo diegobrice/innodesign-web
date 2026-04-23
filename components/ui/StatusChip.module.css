@@ -1,0 +1,43 @@
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--color-text-subtle);
+  text-transform: lowercase;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-pill);
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.success {
+  background: var(--color-success);
+  box-shadow: 0 0 6px -1px var(--color-success);
+}
+
+.warning {
+  background: var(--color-warning);
+}
+
+.danger {
+  background: var(--color-danger);
+}
+
+.muted {
+  background: var(--color-text-subtle);
+}
+
+.label {
+  color: var(--color-text-muted);
+}

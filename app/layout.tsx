@@ -1,19 +1,19 @@
 import type { Metadata, Viewport } from 'next';
-import { Geist, JetBrains_Mono } from 'next/font/google';
+import { Inter, JetBrains_Mono } from 'next/font/google';
 import { brand, site } from '@/data/site';
 import './globals.css';
 
-const geist = Geist({
-  variable: '--font-geist-sans',
+const inter = Inter({
+  variable: '--font-inter',
   subsets: ['latin'],
-  weight: ['400', '500', '600'],
+  weight: ['300', '400', '500', '600', '700', '800', '900'],
   display: 'swap',
 });
 
 const jetbrainsMono = JetBrains_Mono({
   variable: '--font-jetbrains-mono',
   subsets: ['latin'],
-  weight: ['400', '500'],
+  weight: ['400', '500', '700'],
   display: 'swap',
 });
 
@@ -119,7 +119,7 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${geist.variable} ${jetbrainsMono.variable}`}
+      className={`${inter.variable} ${jetbrainsMono.variable}`}
     >
       <body>
         <script

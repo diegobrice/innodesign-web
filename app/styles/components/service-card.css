@@ -3,32 +3,8 @@
     position: relative;
   }
 
-  .service-card::before,
-  .service-card::after {
-    content: '';
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    border: 1px solid transparent;
-    transition: border-color 0.25s;
-  }
-
-  .service-card::before {
-    top: 0.75rem;
-    left: 0.75rem;
-    border-top-color: var(--color-text-subtle);
-    border-left-color: var(--color-text-subtle);
-  }
-
-  .service-card::after {
-    bottom: 0.75rem;
-    right: 0.75rem;
-    border-bottom-color: var(--color-text-subtle);
-    border-right-color: var(--color-text-subtle);
-  }
-
-  .service-card:hover::before,
-  .service-card:hover::after {
-    border-color: var(--color-accent);
+  .service-card--featured {
+    background: var(--color-bg-elevated);
+    box-shadow: 0 0 24px -8px var(--color-accent);
   }
 }
