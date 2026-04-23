@@ -23,6 +23,15 @@
     position: relative;
   }
 
+  /* Skip render/paint work for sections below the first screen until they
+     scroll into view. `contain-intrinsic-size` reserves a reasonable block
+     height to prevent layout shift when content is skipped. */
+  main > section:not(:first-child),
+  .footer {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 800px;
+  }
+
   @media (max-width: 1024px) {
     section {
       padding: 96px 0;

@@ -12,6 +12,20 @@
     scroll-padding-top: 80px;
   }
 
+  /* Defensive reduced-motion override — shortens any CSS-driven animation
+     or transition for users who prefer less motion, in addition to the
+     component-level guards in GSAP (matchMedia) and module CSS. */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
   body {
     font-family: var(--font-sans);
     font-size: 16px;

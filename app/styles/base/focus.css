@@ -1,0 +1,38 @@
+@layer base {
+  /* Remove default outline only when the user is clicking with a pointer.
+     Keyboard focus still gets a clear indicator via :focus-visible below. */
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+    /* Keep focused anchors clear of the sticky header when scrolled to. */
+    scroll-margin-top: 96px;
+  }
+
+  /* Keyboard skip link — hidden off-screen until focused, then pops into
+     view above the sticky navbar. */
+  .skip-link {
+    position: fixed;
+    top: 0.75rem;
+    left: 0.75rem;
+    z-index: 1000;
+    padding: 0.75rem 1rem;
+    background: var(--color-accent);
+    color: var(--color-bg);
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-radius: var(--radius);
+    transform: translateY(-150%);
+    transition: transform 0.15s ease-out;
+  }
+
+  .skip-link:focus-visible {
+    transform: translateY(0);
+    outline-color: var(--color-text);
+  }
+}

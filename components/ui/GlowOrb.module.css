@@ -14,6 +14,25 @@
   opacity: 0.5;
   filter: blur(20px);
   z-index: 0;
+  will-change: transform, opacity;
+  animation: orb-pulse 9s ease-in-out infinite alternate;
+}
+
+@keyframes orb-pulse {
+  from {
+    transform: translateX(-50%) scale(1);
+    opacity: 0.5;
+  }
+  to {
+    transform: translateX(-50%) scale(1.08);
+    opacity: 0.7;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero {
+    animation: none;
+  }
 }
 
 .cta {

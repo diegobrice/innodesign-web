@@ -24,15 +24,6 @@ export function Hero() {
           .from('.hero__subtitle', { autoAlpha: 0, y: 18, duration: 0.8 }, '-=0.7')
           .from('.hero__actions > *', { autoAlpha: 0, y: 16, stagger: 0.1, duration: 0.7 }, '-=0.6')
           .from('.metric', { autoAlpha: 0, y: 24, stagger: 0.12, duration: 0.8 }, '-=0.5');
-
-        gsap.to('.hero__glow', {
-          scale: 1.08,
-          opacity: 0.7,
-          duration: 4.5,
-          repeat: -1,
-          yoyo: true,
-          ease: 'sine.inOut',
-        });
       });
     },
     { scope: root }

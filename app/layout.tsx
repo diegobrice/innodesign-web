@@ -6,7 +6,7 @@ import './globals.css';
 const geist = Geist({
   variable: '--font-geist-sans',
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
+  weight: ['400', '500', '600'],
   display: 'swap',
 });
 
@@ -126,6 +126,9 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <a href="#contenido" className="skip-link">
+          Saltar al contenido principal
+        </a>
         {children}
       </body>
     </html>

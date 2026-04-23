@@ -1,31 +1,9 @@
-'use client';
-
-import { useRef } from 'react';
 import { faqs } from '@/data/content';
 import { Plus, Minus } from '@/components/ui/icons';
-import { gsap, useGSAP } from '@/components/gsap-init';
 
 export function FAQ() {
-  const root = useRef<HTMLElement>(null);
-
-  useGSAP(
-    () => {
-      const mm = gsap.matchMedia();
-      mm.add('(prefers-reduced-motion: no-preference)', () => {
-        gsap.from('.faq-item', {
-          scrollTrigger: { trigger: '.faq__list', start: 'top 82%' },
-          autoAlpha: 0,
-          y: 14,
-          stagger: 0.08,
-          duration: 0.6,
-        });
-      });
-    },
-    { scope: root }
-  );
-
   return (
-    <section ref={root} id="faq">
+    <section id="faq">
       <div className="container grid items-start grid-cols-[1fr_1.5fr] gap-20 max-lg:grid-cols-1 max-lg:gap-12">
         <div>
           <span className="section-kicker">[ 06 ] · FAQ</span>

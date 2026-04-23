@@ -17,3 +17,9 @@
     box-shadow: 0 0 0 6px rgba(198, 255, 61, 0), 0 0 16px var(--color-accent);
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .dot {
+    animation: none;
+  }
+}

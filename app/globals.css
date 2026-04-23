@@ -7,6 +7,7 @@
 @import "./styles/base/reset.css";
 @import "./styles/base/elements.css";
 @import "./styles/base/effects.css";
+@import "./styles/base/focus.css";
 
 @import "./styles/components/container.css";
 @import "./styles/components/section.css";
