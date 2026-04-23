@@ -15,7 +15,7 @@ export function Footer() {
         </div>
 
         <div className="footer__col">
-          <h4 className="font-mono text-text-subtle text-[0.72rem] font-medium uppercase tracking-[0.14em] mb-5">Servicios</h4>
+          <h3 className="font-mono text-text-subtle text-[0.72rem] font-medium uppercase tracking-[0.14em] mb-5">Servicios</h3>
           <ul className="flex flex-col gap-3">
             <li><a href="#servicios" className="footer-link">Desarrollo Web</a></li>
             <li><a href="#servicios" className="footer-link">Apps Móviles</a></li>
@@ -25,7 +25,7 @@ export function Footer() {
         </div>
 
         <div className="footer__col">
-          <h4 className="font-mono text-text-subtle text-[0.72rem] font-medium uppercase tracking-[0.14em] mb-5">Empresa</h4>
+          <h3 className="font-mono text-text-subtle text-[0.72rem] font-medium uppercase tracking-[0.14em] mb-5">Empresa</h3>
           <ul className="flex flex-col gap-3">
             <li><a href="#portfolio" className="footer-link">Portfolio</a></li>
             <li><a href="#proceso" className="footer-link">Proceso</a></li>
@@ -35,7 +35,7 @@ export function Footer() {
         </div>
 
         <div className="footer__col">
-          <h4 className="font-mono text-text-subtle text-[0.72rem] font-medium uppercase tracking-[0.14em] mb-5">Contacto</h4>
+          <h3 className="font-mono text-text-subtle text-[0.72rem] font-medium uppercase tracking-[0.14em] mb-5">Contacto</h3>
           <ul className="flex flex-col gap-3">
             <li><a href="mailto:hola@innodesign.com" className="footer-link">hola@innodesign.com</a></li>
             <li><a href="#" className="footer-link">LinkedIn</a></li>
