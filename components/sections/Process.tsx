@@ -1,9 +1,40 @@
+'use client';
+
+import { useRef } from 'react';
 import { processSteps } from '@/data/content';
 import { SectionHeader } from '@/components/ui/SectionHeader';
+import { gsap, useGSAP } from '@/components/gsap-init';
 
 export function Process() {
+  const root = useRef<HTMLElement>(null);
+
+  useGSAP(
+    () => {
+      const mm = gsap.matchMedia();
+      mm.add('(prefers-reduced-motion: no-preference)', () => {
+        gsap.from('.section-header > *', {
+          scrollTrigger: { trigger: '.section-header', start: 'top 85%', toggleActions: 'play none none none' },
+          autoAlpha: 0,
+          y: 22,
+          stagger: 0.12,
+          duration: 0.9,
+        });
+
+        gsap.from('.process-step', {
+          scrollTrigger: { trigger: '.process__steps', start: 'top 78%' },
+          autoAlpha: 0,
+          x: -32,
+          stagger: 0.14,
+          duration: 0.8,
+          ease: 'power2.out',
+        });
+      });
+    },
+    { scope: root }
+  );
+
   return (
-    <section id="proceso" className="bg-bg-inset border-y border-border">
+    <section ref={root} id="proceso" className="bg-bg-inset border-y border-border">
       <div className="container">
         <SectionHeader
           kicker="[ 02 ] · Proceso"

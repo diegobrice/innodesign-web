@@ -1,8 +1,33 @@
+'use client';
+
+import { useRef } from 'react';
 import { BrandMark } from '@/components/ui/BrandMark';
+import { gsap, useGSAP } from '@/components/gsap-init';
 
 export function Footer() {
+  const root = useRef<HTMLElement>(null);
+
+  useGSAP(
+    () => {
+      const mm = gsap.matchMedia();
+      mm.add('(prefers-reduced-motion: no-preference)', () => {
+        gsap.from('.footer__brand, .footer__col', {
+          scrollTrigger: { trigger: root.current, start: 'top 85%' },
+          autoAlpha: 0,
+          y: 18,
+          stagger: 0.1,
+          duration: 0.7,
+        });
+      });
+    },
+    { scope: root }
+  );
+
   return (
-    <footer className="footer bg-bg-inset text-text-muted pt-24 border-t border-border">
+    <footer
+      ref={root}
+      className="footer bg-bg-inset text-text-muted pt-24 border-t border-border"
+    >
       <div className="container grid grid-cols-[2fr_1fr_1fr_1fr] gap-16 pb-20 max-lg:grid-cols-1 max-lg:gap-12">
         <div className="footer__brand">
           <a href="#" className="inline-flex items-center gap-[10px] text-[1.1rem] font-semibold text-text mb-4 tracking-[-0.02em]">

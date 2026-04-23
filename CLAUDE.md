@@ -18,7 +18,7 @@ No test suite is configured.
 
 - **Next.js 16** (App Router) · **React 19** · **TypeScript**
 - **Tailwind CSS v4** — configured entirely via `@theme inline` in `app/globals.css`; no `tailwind.config.js` file. Tokens become both CSS variables and Tailwind utilities automatically.
-- **GSAP 3 + ScrollTrigger** — all animations live in `components/Animations.tsx` (a client component that lazy-imports GSAP). Sections are static server components; they expose BEM-style class names (`.hero__badge`, `.service-card`, etc.) as animation targets.
+- **GSAP 3 + ScrollTrigger + `@gsap/react`** — each section owns its own animation. Sections are `'use client'` components that call `useGSAP(() => { ... }, { scope: rootRef })`, so selectors like `.service-card` only match within that section. Plugin registration and shared defaults live in `components/gsap-init.ts`.
 - **pnpm** (workspace file present).
 
 ## Architecture
@@ -30,17 +30,18 @@ app/
   layout.tsx          # fonts, metadata, JSON-LD schema, viewport
   page.tsx            # section composition
   globals.css         # Tailwind v4 @theme tokens + base element styles
-  hero-preload.css    # pre-hides hero elements when .js class is present (anti-FOUC)
   opengraph-image.tsx # dynamic OG image
   icon.tsx            # dynamic favicon
   robots.ts / sitemap.ts
 
 components/
-  Animations.tsx      # GSAP orchestration — single client entry point
-  sections/           # one file per page section (all server components)
+  gsap-init.ts        # registers useGSAP + ScrollTrigger, sets gsap.defaults,
+                      # re-exports { gsap, ScrollTrigger, useGSAP }
+  sections/           # one file per page section (client components, each owns its animation)
   ui/
     Button.tsx + Button.module.css         # primary/ghost, optional size="lg"
     StatusDot.tsx + StatusDot.module.css   # pulsing neon dot
+    MetricCounter.tsx                      # count-up number, scoped useGSAP + React state
 
 data/content.ts       # all copy: metrics, clients, services, process, cases,
                       # differentiators, testimonials, FAQs
@@ -48,13 +49,29 @@ data/content.ts       # all copy: metrics, clients, services, process, cases,
 
 **Content changes** → `data/content.ts` only.
 **Style/token changes** → `app/globals.css` `@theme inline` block; component-scoped styles live alongside their component as `*.module.css`.
-**Animation changes** → `components/Animations.tsx`.
+**Animation changes** → the `useGSAP()` call inside the relevant section component. Import `{ gsap, useGSAP }` (and `ScrollTrigger` if needed) from `@/components/gsap-init`.
 
-### Anti-FOUC / JS-gated pattern
-`Animations.tsx` adds `.js` to `<html>` on mount. `hero-preload.css` uses `.js .hero__*` selectors to keep hero elements `visibility: hidden` until GSAP animates them in. When adding new hero elements that GSAP animates from opacity/translate, also add their class to `hero-preload.css` — otherwise they flash unstyled before GSAP runs.
+### Animation pattern
+Each animated section is `'use client'`, holds a `useRef` on its root element, and passes it as `scope` to `useGSAP` so selectors resolve only within that section:
 
-### Reduced motion
-`Animations.tsx` uses `gsap.matchMedia()` with `(prefers-reduced-motion: reduce)`. Under reduce, hero elements are `gsap.set(..., { autoAlpha: 1 })` and no scroll/entrance animations register. Any new hero element that `hero-preload.css` hides must also be re-shown in the reduced-motion branch.
+```tsx
+'use client';
+import { useRef } from 'react';
+import { gsap, useGSAP } from '@/components/gsap-init';
+
+export function Services() {
+  const root = useRef<HTMLElement>(null);
+  useGSAP(() => {
+    const mm = gsap.matchMedia();
+    mm.add('(prefers-reduced-motion: no-preference)', () => {
+      gsap.from('.service-card', { /* ... */ });
+    });
+  }, { scope: root });
+  return <section ref={root}>{/* ... */}</section>;
+}
+```
+
+`useGSAP` handles cleanup (including ScrollTrigger instances) automatically on unmount, and is safe under React 19 StrictMode. Reduced motion: guard entrance/scroll animations with `mm.add('(prefers-reduced-motion: no-preference)', ...)` — under reduce-motion the block simply doesn't register. For hero-style pre-hidden elements, also add an explicit `reduce` branch that calls `gsap.set(..., { autoAlpha: 1 })` so content stays visible.
 
 ## Design System
 

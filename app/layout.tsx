@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Geist, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
-import './hero-preload.css';
 
 const geist = Geist({
   variable: '--font-geist-sans',

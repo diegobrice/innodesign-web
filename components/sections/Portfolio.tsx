@@ -1,11 +1,42 @@
+'use client';
+
+import { useRef } from 'react';
 import { cases } from '@/data/content';
 import { Button } from '@/components/ui/Button';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { ArrowRight } from '@/components/ui/icons';
+import { gsap, useGSAP } from '@/components/gsap-init';
 
 export function Portfolio() {
+  const root = useRef<HTMLElement>(null);
+
+  useGSAP(
+    () => {
+      const mm = gsap.matchMedia();
+      mm.add('(prefers-reduced-motion: no-preference)', () => {
+        gsap.from('.section-header > *', {
+          scrollTrigger: { trigger: '.section-header', start: 'top 85%', toggleActions: 'play none none none' },
+          autoAlpha: 0,
+          y: 22,
+          stagger: 0.12,
+          duration: 0.9,
+        });
+
+        gsap.from('.case-card', {
+          scrollTrigger: { trigger: '.portfolio__grid', start: 'top 80%' },
+          autoAlpha: 0,
+          y: 40,
+          scale: 0.97,
+          stagger: 0.12,
+          duration: 0.9,
+        });
+      });
+    },
+    { scope: root }
+  );
+
   return (
-    <section id="portfolio">
+    <section ref={root} id="portfolio">
       <div className="container">
         <SectionHeader
           kicker="[ 03 ] · Portfolio"

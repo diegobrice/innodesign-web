@@ -1,10 +1,36 @@
+'use client';
+
+import { useRef } from 'react';
 import { Button } from '@/components/ui/Button';
 import { GlowOrb } from '@/components/ui/GlowOrb';
 import { GridBackdrop } from '@/components/ui/GridBackdrop';
+import { gsap, useGSAP } from '@/components/gsap-init';
 
 export function FinalCTA() {
+  const root = useRef<HTMLElement>(null);
+
+  useGSAP(
+    () => {
+      const mm = gsap.matchMedia();
+      mm.add('(prefers-reduced-motion: no-preference)', () => {
+        gsap.from('.cta__inner > *', {
+          scrollTrigger: { trigger: root.current, start: 'top 75%' },
+          autoAlpha: 0,
+          y: 28,
+          stagger: 0.12,
+          duration: 0.9,
+        });
+      });
+    },
+    { scope: root }
+  );
+
   return (
-    <section id="contacto" className="cta relative overflow-hidden py-[160px] border-t border-border">
+    <section
+      ref={root}
+      id="contacto"
+      className="cta relative overflow-hidden py-[160px] border-t border-border"
+    >
       <GlowOrb variant="cta" />
       <GridBackdrop variant="cta" />
 

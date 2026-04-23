@@ -9,7 +9,6 @@ import { Testimonials } from '@/components/sections/Testimonials';
 import { FAQ } from '@/components/sections/FAQ';
 import { FinalCTA } from '@/components/sections/FinalCTA';
 import { Footer } from '@/components/sections/Footer';
-import { Animations } from '@/components/Animations';
 
 export default function Home() {
   return (
@@ -27,7 +26,6 @@ export default function Home() {
         <FinalCTA />
       </main>
       <Footer />
-      <Animations />
     </>
   );
 }

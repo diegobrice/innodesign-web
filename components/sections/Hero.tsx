@@ -1,12 +1,48 @@
+'use client';
+
+import { useRef } from 'react';
 import { StatusDot } from '@/components/ui/StatusDot';
 import { Button } from '@/components/ui/Button';
 import { GlowOrb } from '@/components/ui/GlowOrb';
 import { GridBackdrop } from '@/components/ui/GridBackdrop';
+import { MetricCounter } from '@/components/ui/MetricCounter';
 import { metrics } from '@/data/content';
+import { gsap, useGSAP } from '@/components/gsap-init';
 
 export function Hero() {
+  const root = useRef<HTMLElement>(null);
+
+  useGSAP(
+    () => {
+      const mm = gsap.matchMedia();
+
+      mm.add('(prefers-reduced-motion: no-preference)', () => {
+        const tl = gsap.timeline({ delay: 0.15 });
+        tl.from('.hero__badge', { autoAlpha: 0, y: 14, duration: 0.7 })
+          .from('.hero__title', { autoAlpha: 0, y: 28, duration: 1.1, ease: 'power4.out' }, '-=0.4')
+          .from('.hero__title em', { color: '#F5F5F7', duration: 0.9, ease: 'power2.out' }, '-=0.7')
+          .from('.hero__subtitle', { autoAlpha: 0, y: 18, duration: 0.8 }, '-=0.7')
+          .from('.hero__actions > *', { autoAlpha: 0, y: 16, stagger: 0.1, duration: 0.7 }, '-=0.6')
+          .from('.metric', { autoAlpha: 0, y: 24, stagger: 0.12, duration: 0.8 }, '-=0.5');
+
+        gsap.to('.hero__glow', {
+          scale: 1.08,
+          opacity: 0.7,
+          duration: 4.5,
+          repeat: -1,
+          yoyo: true,
+          ease: 'sine.inOut',
+        });
+      });
+    },
+    { scope: root }
+  );
+
   return (
-    <section className="pt-[160px] pb-[120px] max-lg:pt-[120px] max-lg:pb-[80px] text-center overflow-hidden border-b border-border">
+    <section
+      ref={root}
+      className="pt-[160px] pb-[120px] max-lg:pt-[120px] max-lg:pb-[80px] text-center overflow-hidden border-b border-border"
+    >
       <GridBackdrop variant="hero" />
       <GlowOrb variant="hero" className="hero__glow" />
 
@@ -38,7 +74,9 @@ export function Hero() {
           {metrics.map((m) => (
             <div key={m.label} className="metric relative text-left py-9 px-6 border-r border-border last:border-r-0 max-sm:border-r-0 max-sm:border-b max-sm:border-border max-sm:last:border-b-0">
               <span className="block uppercase font-mono text-[0.68rem] text-text-subtle tracking-[0.12em] mb-[14px]">{m.label}</span>
-              <strong className="block font-sans text-[clamp(2.2rem,3.5vw,3.2rem)] font-normal tracking-[-0.04em] leading-none mb-2 text-text">{m.value}</strong>
+              <strong className="block font-sans text-[clamp(2.2rem,3.5vw,3.2rem)] font-normal tracking-[-0.04em] leading-none mb-2 text-text">
+                <MetricCounter value={m.value} />
+              </strong>
               <span className="text-text-muted text-[0.85rem]">{m.desc}</span>
             </div>
           ))}
