@@ -2,11 +2,13 @@
   "name": "innodesign-web",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "pnpm@10.12.2",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",

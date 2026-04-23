@@ -1,37 +1,68 @@
 import { ImageResponse } from 'next/og';
+import { brand, site } from '@/data/site';
+import { metrics } from '@/data/content';
 
 export const runtime = 'edge';
-export const alt = 'innodesign — Agencia de desarrollo de software';
+export const alt = site.title;
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
-export default function OgImage() {
+async function loadGeist(weight: 400 | 600): Promise<ArrayBuffer> {
+  const cssUrl = `https://fonts.googleapis.com/css2?family=Geist:wght@${weight}`;
+  const css = await fetch(cssUrl, {
+    headers: {
+      // Asks Google Fonts for a woff2 payload; without a browser UA it serves a TTF subset
+      // that `next/og` also accepts, so either path works — we just need the `src: url(...)`.
+      'User-Agent':
+        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36',
+    },
+  }).then((r) => r.text());
+
+  const src = css.match(/src:\s*url\(([^)]+)\)\s*format\(['"]?(?:woff2?|truetype|opentype)['"]?\)/);
+  if (!src) throw new Error('Geist font source not found in Google Fonts CSS');
+  const res = await fetch(src[1]);
+  if (!res.ok) throw new Error(`Failed to load Geist (${weight}): ${res.status}`);
+  return res.arrayBuffer();
+}
+
+export default async function OgImage() {
+  const [regular, semibold] = await Promise.all([loadGeist(400), loadGeist(600)]);
+
+  const markRing = 28;
+  const markInner = 18;
+  const markBorder = 2;
+
+  const metricsLine = metrics
+    .map((m) => `${m.value} ${m.desc.toLowerCase()}`)
+    .join(' · ');
+
   return new ImageResponse(
     (
       <div
         style={{
           width: '100%',
           height: '100%',
-          background: '#0A0A0B',
+          background: brand.bg,
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
           position: 'relative',
-          fontFamily: 'sans-serif',
+          fontFamily: 'Geist',
+          color: brand.text,
+          letterSpacing: '-0.02em',
         }}
       >
-        {/* Grid background */}
+        {/* Grid backdrop — matches `.grid-backdrop` token usage in globals */}
         <div
           style={{
             position: 'absolute',
             inset: 0,
-            backgroundImage:
-              'linear-gradient(rgba(198,255,61,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(198,255,61,0.05) 1px, transparent 1px)',
+            backgroundImage: `linear-gradient(${brand.accentGridLine} 1px, transparent 1px), linear-gradient(90deg, ${brand.accentGridLine} 1px, transparent 1px)`,
             backgroundSize: '64px 64px',
           }}
         />
-        {/* Glow */}
+        {/* Accent glow — mirrors `.hero__glow` */}
         <div
           style={{
             position: 'absolute',
@@ -40,27 +71,26 @@ export default function OgImage() {
             transform: 'translateX(-50%)',
             width: 800,
             height: 800,
-            background:
-              'radial-gradient(circle, rgba(198,255,61,0.2) 0%, transparent 60%)',
+            background: `radial-gradient(circle, ${brand.accentGlow} 0%, transparent 60%)`,
             filter: 'blur(60px)',
           }}
         />
-        {/* Logo mark */}
+
+        {/* Brand mark — mirrors `BrandMark` (ring + inner dot at ~64% proportion) */}
         <div
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: 16,
-            marginBottom: 32,
+            gap: 14,
+            marginBottom: 36,
           }}
         >
           <div
             style={{
-              width: 24,
-              height: 24,
+              width: markRing,
+              height: markRing,
               borderRadius: '50%',
-              border: '2px solid #C6FF3D',
-              position: 'relative',
+              border: `${markBorder}px solid ${brand.accent}`,
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -68,53 +98,60 @@ export default function OgImage() {
           >
             <div
               style={{
-                width: 10,
-                height: 10,
+                width: markInner,
+                height: markInner,
                 borderRadius: '50%',
-                background: '#C6FF3D',
+                background: brand.accent,
               }}
             />
           </div>
-          <span style={{ fontSize: 28, fontWeight: 600, color: '#F5F5F7', letterSpacing: '-0.02em' }}>
-            innodesign
-            <span style={{ color: '#C6FF3D' }}>.</span>
+          <span style={{ fontSize: 30, fontWeight: 600 }}>
+            {site.name}
+            <span style={{ color: brand.accent }}>.</span>
           </span>
         </div>
 
-        {/* Headline */}
+        {/* Headline — matches the Hero `<h1>` verbatim, with the same neon <em> word */}
         <div
           style={{
-            fontSize: 64,
+            fontSize: 68,
             fontWeight: 400,
-            color: '#F5F5F7',
-            letterSpacing: '-0.04em',
+            letterSpacing: '-0.045em',
             lineHeight: 1,
             textAlign: 'center',
-            maxWidth: 900,
-            marginBottom: 24,
+            maxWidth: 960,
+            marginBottom: 28,
+            padding: '0 48px',
             display: 'flex',
             flexWrap: 'wrap',
             justifyContent: 'center',
           }}
         >
-          Construimos productos que hacen{' '}
-          <span style={{ color: '#C6FF3D', marginLeft: 14 }}>crecer</span>
-          &nbsp;tu negocio.
+          Construimos productos digitales que hacen{' '}
+          <span style={{ color: brand.accent, margin: '0 14px' }}>crecer</span>
+          tu negocio.
         </div>
 
-        {/* Subtitle */}
+        {/* Metrics line — sourced from data/content.ts so OG stays in sync with the page */}
         <div
           style={{
             fontSize: 22,
-            color: '#8A8A92',
+            color: brand.textMuted,
             textAlign: 'center',
-            maxWidth: 680,
+            maxWidth: 820,
+            letterSpacing: '-0.005em',
           }}
         >
-          Agencia de desarrollo de software · +80 proyectos · 12 países
+          Agencia de desarrollo de software · {metricsLine}
         </div>
       </div>
     ),
-    { ...size }
+    {
+      ...size,
+      fonts: [
+        { name: 'Geist', data: regular, style: 'normal', weight: 400 },
+        { name: 'Geist', data: semibold, style: 'normal', weight: 600 },
+      ],
+    }
   );
 }

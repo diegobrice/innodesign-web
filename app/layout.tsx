@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Geist, JetBrains_Mono } from 'next/font/google';
+import { brand, site } from '@/data/site';
 import './globals.css';
 
 const geist = Geist({
@@ -16,18 +17,15 @@ const jetbrainsMono = JetBrains_Mono({
   display: 'swap',
 });
 
-const siteUrl = 'https://innodesign.com';
-
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
+  metadataBase: new URL(site.url),
   title: {
-    default: 'innodesign — Agencia de desarrollo de software',
-    template: '%s · innodesign',
+    default: site.title,
+    template: `%s · ${site.name}`,
   },
-  description:
-    'Agencia de desarrollo de software. Creamos productos digitales que transforman negocios. Desarrollo web, apps móviles, SaaS y consultoría técnica.',
-  applicationName: 'innodesign',
-  authors: [{ name: 'innodesign', url: siteUrl }],
+  description: site.description,
+  applicationName: site.name,
+  authors: [{ name: site.name, url: site.url }],
   keywords: [
     'agencia de software',
     'desarrollo web',
@@ -42,23 +40,22 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'es_ES',
     url: '/',
-    siteName: 'innodesign',
-    title: 'innodesign — Agencia de desarrollo de software',
-    description:
-      'Construimos productos digitales que hacen crecer tu negocio. +80 proyectos entregados globalmente.',
+    siteName: site.name,
+    title: site.title,
+    description: site.ogSummary,
     images: [
       {
         url: '/opengraph-image',
         width: 1200,
         height: 630,
-        alt: 'innodesign — Agencia de desarrollo de software',
+        alt: site.title,
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'innodesign — Agencia de desarrollo de software',
-    description: 'Construimos productos digitales que hacen crecer tu negocio.',
+    title: site.title,
+    description: site.tagline,
     images: ['/opengraph-image'],
   },
   robots: {
@@ -74,7 +71,7 @@ export const metadata: Metadata = {
 
 export function generateViewport(): Viewport {
   return {
-    themeColor: '#0A0A0B',
+    themeColor: brand.bg,
     colorScheme: 'dark',
     width: 'device-width',
     initialScale: 1,
@@ -86,31 +83,31 @@ const jsonLd = {
   '@graph': [
     {
       '@type': 'Organization',
-      '@id': `${siteUrl}/#organization`,
-      name: 'innodesign',
-      url: siteUrl,
+      '@id': `${site.url}/#organization`,
+      name: site.name,
+      url: site.url,
       logo: {
         '@type': 'ImageObject',
-        url: `${siteUrl}/icon.png`,
+        url: `${site.url}/icon.png`,
       },
       contactPoint: {
         '@type': 'ContactPoint',
-        email: 'hola@innodesign.com',
+        email: site.contactEmail,
         contactType: 'customer support',
         availableLanguage: 'Spanish',
       },
       sameAs: [
-        'https://linkedin.com/company/innodesign',
-        'https://github.com/innodesign',
-        'https://twitter.com/innodesign',
+        `https://linkedin.com/company/${site.name}`,
+        `https://github.com/${site.name}`,
+        `https://twitter.com/${site.name}`,
       ],
     },
     {
       '@type': 'WebSite',
-      '@id': `${siteUrl}/#website`,
-      url: siteUrl,
-      name: 'innodesign',
-      publisher: { '@id': `${siteUrl}/#organization` },
+      '@id': `${site.url}/#website`,
+      url: site.url,
+      name: site.name,
+      publisher: { '@id': `${site.url}/#organization` },
       inLanguage: 'es',
     },
   ],
