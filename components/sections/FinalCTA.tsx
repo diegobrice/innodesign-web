@@ -3,7 +3,6 @@
 import { useRef } from 'react';
 import { Button } from '@/components/ui/Button';
 import { BracketFrame } from '@/components/ui/BracketFrame';
-import { SectionLabel } from '@/components/ui/SectionLabel';
 import { gsap, useGSAP } from '@/components/gsap-init';
 
 export function FinalCTA() {
@@ -22,7 +21,7 @@ export function FinalCTA() {
         });
       });
     },
-    { scope: root }
+    { scope: root },
   );
 
   return (
@@ -36,16 +35,18 @@ export function FinalCTA() {
           <BracketFrame size={20} />
 
           <div className="cta__inner text-center mx-auto relative max-w-[620px] z-[2]">
-            <SectionLabel number="07">APLICACIONES</SectionLabel>
+            <span className="label-mono label-mono--accent">HABLEMOS</span>
             <h2 className="text-[clamp(2.2rem,5vw,3.75rem)] mt-5 mb-6 font-bold tracking-[-0.035em] leading-[1.05]">
-              ¿Listo para construir tu próximo <em>producto</em>?
+              ¿Listo para lanzar tu <em>proyecto digital</em>?
             </h2>
             <p className="text-[1.1rem] text-text-muted mb-10 max-w-[520px] mx-auto">
-              Agenda una llamada de 30 minutos y te damos una propuesta clara en menos de 48 horas.
+              Agenda una llamada de 30 minutos y te damos una propuesta clara en
+              menos de 48 horas.
             </p>
             <div className="flex justify-center flex-wrap gap-3 max-sm:w-full">
               <Button
-                href="mailto:hola@innodesign.com"
+                href="https://wa.me/51952369305"
+                target="_blank"
                 size="lg"
                 prefix
                 className="max-sm:flex-1 max-sm:min-w-[180px]"
@@ -53,12 +54,13 @@ export function FinalCTA() {
                 agendar llamada
               </Button>
               <Button
-                href="mailto:hola@innodesign.com"
+                href="https://wa.me/51952369305"
+                target="_blank"
                 variant="ghost"
                 size="lg"
                 className="max-sm:flex-1 max-sm:min-w-[180px]"
               >
-                hola@innodesign.com
+                escribir por WhatsApp
               </Button>
             </div>
           </div>

@@ -1,10 +1,21 @@
 @layer components {
   .service-card {
     position: relative;
+    overflow: hidden;
+    transition: box-shadow 0.35s ease;
   }
 
-  .service-card--featured {
-    background: var(--color-bg-elevated);
+  .service-card.is-active {
     box-shadow: 0 0 24px -8px var(--color-accent);
+  }
+
+  .service-card__bg {
+    position: absolute;
+    inset: 0;
+    background: var(--color-bg-elevated);
+  }
+
+  .service-card .bracket-frame {
+    opacity: 0;
   }
 }

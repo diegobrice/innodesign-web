@@ -1,7 +1,7 @@
 /* Font tokens — resolved by next/font via CSS variable injection on <html>. */
 @theme inline {
   --font-sans: var(--font-inter);
-  --font-mono: var(--font-jetbrains-mono);
+  --font-mono: var(--font-chakra-petch);
 
   /* Type scale (1rem = 16px) */
   --text-display: clamp(3.5rem, 8vw, 6.5rem);   /* hero word mark */

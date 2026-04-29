@@ -8,7 +8,6 @@ const NAV_LINKS = [
   { href: '#servicios', label: 'Servicios' },
   { href: '#proceso', label: 'Proceso' },
   { href: '#portfolio', label: 'Portfolio' },
-  { href: '#testimonios', label: 'Testimonios' },
   { href: '#faq', label: 'FAQ' },
 ];
 
@@ -35,7 +34,7 @@ export function Navbar() {
 
   return (
     <header className="navbar sticky top-0 bg-[rgba(11,15,20,0.85)] [backdrop-filter:blur(12px)_saturate(120%)] [-webkit-backdrop-filter:blur(12px)_saturate(120%)] border-b border-border z-[100]">
-      <div className="container flex items-center justify-between h-[64px]">
+      <div className="container flex items-center justify-between h-16">
         <a
           href="#"
           aria-label="innodesign — ir al inicio"
@@ -54,7 +53,7 @@ export function Navbar() {
                 key={href}
                 href={href}
                 aria-current={isActive ? 'true' : undefined}
-                className={`font-mono text-[13px] tracking-[0.04em] transition-colors duration-200 ${
+                className={`font-mono text-body tracking-[0.04em] transition-colors duration-200 ${
                   isActive ? 'text-accent' : 'text-text-muted hover:text-accent'
                 }`}
               >
@@ -65,7 +64,7 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center gap-4">
-          <Button href="#contacto" variant="ghost" prefix>
+          <Button href="https://wa.me/51952369305" target="_blank" variant="ghost" prefix>
             contactar
           </Button>
         </div>

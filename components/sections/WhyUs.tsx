@@ -1,13 +1,13 @@
 'use client';
 
 import { useRef } from 'react';
-import { Zap, Target, Lock, TrendingUp } from 'lucide-react';
+import { MonitorSmartphone, Search, Zap, Users } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import { differentiators } from '@/data/content';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { gsap, useGSAP } from '@/components/gsap-init';
 
-const iconMap: Record<string, LucideIcon> = { Zap, Target, Lock, TrendingUp };
+const iconMap: Record<string, LucideIcon> = { MonitorSmartphone, Search, Zap, Users };
 
 export function WhyUs() {
   const root = useRef<HTMLElement>(null);
@@ -40,9 +40,8 @@ export function WhyUs() {
     <section ref={root} className="bg-bg-elevated border-y border-border">
       <div className="container">
         <SectionHeader
-          kicker="Diferenciadores"
-          number="04"
-          title="Más que una agencia, un socio técnico"
+          kicker="Por qué elegirnos"
+          title="Por qué tu proyecto digital importa hacerlo bien"
         />
 
         <div className="why__grid grid grid-cols-4 max-lg:grid-cols-2 max-sm:grid-cols-1 gap-12">

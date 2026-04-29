@@ -1,5 +1,5 @@
 import { faqs } from '@/data/content';
-import { Plus, Minus } from '@/components/ui/icons';
+import { Plus, Minus } from 'lucide-react';
 
 export function FAQ() {
   return (

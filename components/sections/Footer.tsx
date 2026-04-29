@@ -25,9 +25,9 @@ export function Footer() {
         <div className="footer__col">
           <h3 className="font-mono text-text-subtle text-[11px] font-medium uppercase tracking-[0.14em] mb-5">Servicios</h3>
           <ul className="flex flex-col gap-3">
-            <li><a href="#servicios" className="footer-link">Desarrollo Web</a></li>
+            <li><a href="#servicios" className="footer-link">Páginas Web</a></li>
             <li><a href="#servicios" className="footer-link">Apps Móviles</a></li>
-            <li><a href="#servicios" className="footer-link">SaaS</a></li>
+            <li><a href="#servicios" className="footer-link">Tiendas Online</a></li>
             <li><a href="#servicios" className="footer-link">Consultoría</a></li>
           </ul>
         </div>
@@ -38,7 +38,7 @@ export function Footer() {
             <li><a href="#portfolio" className="footer-link">Portfolio</a></li>
             <li><a href="#proceso" className="footer-link">Proceso</a></li>
             <li><a href="#" className="footer-link">Blog</a></li>
-            <li><a href="#contacto" className="footer-link">Contacto</a></li>
+            <li><a href="https://wa.me/51952369305" target="_blank" rel="noopener noreferrer" className="footer-link">Contacto</a></li>
           </ul>
         </div>
 

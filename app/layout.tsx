@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter, JetBrains_Mono } from 'next/font/google';
+import { Inter, Chakra_Petch } from 'next/font/google';
 import { brand, site } from '@/data/site';
 import './globals.css';
 
@@ -10,8 +10,8 @@ const inter = Inter({
   display: 'swap',
 });
 
-const jetbrainsMono = JetBrains_Mono({
-  variable: '--font-jetbrains-mono',
+const chakraPetch = Chakra_Petch({
+  variable: '--font-chakra-petch',
   subsets: ['latin'],
   weight: ['400', '500', '700'],
   display: 'swap',
@@ -119,7 +119,7 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${inter.variable} ${jetbrainsMono.variable}`}
+      className={`${inter.variable} ${chakraPetch.variable}`}
     >
       <body>
         <script

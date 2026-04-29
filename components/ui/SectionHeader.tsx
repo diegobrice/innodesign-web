@@ -2,7 +2,6 @@ import type { ReactNode } from 'react';
 
 interface SectionHeaderProps {
   kicker: string;
-  number?: string;
   title: ReactNode;
   subtitle?: ReactNode;
   align?: 'center' | 'start';
@@ -10,7 +9,6 @@ interface SectionHeaderProps {
 
 export function SectionHeader({
   kicker,
-  number,
   title,
   subtitle,
   align = 'center',
@@ -18,7 +16,6 @@ export function SectionHeader({
   return (
     <div className={`section-header section-header--${align}`}>
       <span className="section-kicker label-mono label-mono--accent">
-        {number && <span>{number}. </span>}
         {kicker}
       </span>
       <h2 className="section-title">{title}</h2>

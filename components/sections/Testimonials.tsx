@@ -3,7 +3,7 @@
 import { useRef } from 'react';
 import { testimonials } from '@/data/content';
 import { SectionHeader } from '@/components/ui/SectionHeader';
-import { Quote } from '@/components/ui/icons';
+import { Quote } from 'lucide-react';
 import { gsap, useGSAP } from '@/components/gsap-init';
 
 export function Testimonials() {
@@ -38,7 +38,6 @@ export function Testimonials() {
       <div className="container">
         <SectionHeader
           kicker="Testimonios"
-          number="05"
           title="Lo que dicen nuestros clientes"
         />
 

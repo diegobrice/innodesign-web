@@ -25,7 +25,7 @@ No test suite is configured.
 
 ## Architecture
 
-Single-page marketing site in Spanish (`<html lang="es">`). One route: `app/page.tsx` composes sections in order: Navbar → Hero → Clients → Services → Process → Portfolio → WhyUs → Testimonials → FAQ → FinalCTA → SystemShowcase → Footer.
+Single-page marketing site in Spanish (`<html lang="es">`). One route: `app/page.tsx` composes sections in order: Navbar → Hero → WhyUs → Services → Process → Portfolio → FAQ → FinalCTA → Footer.
 
 ```
 app/
@@ -44,26 +44,17 @@ components/
   gsap-init.ts        # registers useGSAP + ScrollTrigger, sets gsap.defaults,
                       # re-exports { gsap, ScrollTrigger, useGSAP }
   sections/           # one file per page section (client components, each owns its animation)
-  ui/
-    Button.tsx + Button.module.css         # primary/ghost, optional size="lg"
-    StatusDot.tsx + StatusDot.module.css   # pulsing neon dot
-    MetricCounter.tsx                      # count-up number, scoped useGSAP + React state
-    SectionHeader.tsx                      # numbered kicker + h2 + optional AccentRule + subtitle
-    SectionLabel.tsx                       # "01. SERVICIOS" mono eyebrow
-    BrandMark.tsx + BrandMark.module.css   # bracket-corner glyph (inline SVG)
-    BracketFrame.tsx + BracketFrame.module.css  # 4-corner accent frame (decorative)
-    Caret.tsx                              # blinking `_` signature (uses global .caret-blink)
-    AccentRule.tsx                         # 2px gradient line cyan→púrpura
-    StatusChip.tsx + StatusChip.module.css # mono pill with dot (success/warning/danger/muted)
-    GlowOrb.tsx + GlowOrb.module.css       # ambient accent glow (legacy — prefer BracketFrame/BgGrid)
-    GridBackdrop.tsx + GridBackdrop.module.css  # 32px cyan grid overlay (hero/cta variants)
-    TerminalPanel.tsx + TerminalPanel.module.css # terminal window with traffic lights + log lines
-    StatsHud.tsx + StatsHud.module.css     # CPU/MEM/NET/UPTIME live HUD (respects reduced-motion)
-    CodeSnippet.tsx + CodeSnippet.module.css # mono code block inside a terminal frame
-    icons/index.ts                         # re-exports from lucide-react (ArrowRight, Plus, Minus, Quote)
+  ui/                 # primitives — Tailwind-first (see "Styling UI primitives" below)
+    Button.tsx        # primary/ghost/outline, size="lg", target prop for external links
+    StatusChip.tsx    # mono pill with dot (success/warning/danger/muted)
+    BracketFrame.tsx  # 4-corner accent frame (decorative)
+    GridBackdrop.tsx  # 32px cyan grid overlay (hero/cta variants)
+    SectionHeader.tsx # numbered kicker + h2 + optional AccentRule + subtitle
+    Caret.tsx         # blinking `_` signature (uses global .caret-blink)
+    useScrambleHover.ts  # hook used by Button label hover scramble
 
 data/
-  content.ts   # all copy: metrics, clients, services, process, cases, differentiators, testimonials, FAQs
+  content.ts   # all copy: services, process steps, cases (portfolio), differentiators, testimonials, FAQs
   site.ts      # site URL, name, description; brand palette as JS constants (used in edge-runtime image routes)
 ```
 
@@ -71,7 +62,11 @@ data/
 
 **Content changes** → `data/content.ts` only.
 **Site metadata** → `data/site.ts` (also the source of truth for brand hex values in `opengraph-image.tsx` and `icon.tsx`, where CSS variables can't be resolved).
-**Token/style changes** → `app/styles/tokens/colors.css` for palette, `typography.css` for type scale, `layout.css` for spacing; component-scoped styles live alongside their component as `*.module.css`.
+**Token/style changes** → `app/styles/tokens/colors.css` for palette, `typography.css` for type scale, `layout.css` for spacing.
+
+**Styling UI primitives** (`components/ui/*`) → **Tailwind classes by default**. The `@theme inline` token blocks expose every brand variable as a Tailwind utility (`bg-accent`, `border-border-strong`, `font-mono`, `rounded-pill`, `text-text-muted`, etc.), so primitives should be styled with utilities + arbitrary values when needed (`[mask-image:...]`, `animate-[name_2s_ease_infinite]`). Do **not** introduce new `*.module.css` files in `components/ui/` unless the component truly requires it (e.g. complex keyframes that must be globally registered, multi-element pseudo-element layering that's unreadable inline). Shared keyframes live in `app/styles/base/utilities.css` (e.g. `caret-blink`, `status-dot-pulse`) and are applied via Tailwind's arbitrary `animate-[…]` utility.
+
+**Section / cross-component styling** → still uses global classes in `app/styles/components/` (`.section-header`, `.service-card`, `.case-card`, etc.). That layer is intentionally CSS, not Tailwind, and is unaffected by the Tailwind-first rule for `components/ui/`.
 **Shared CSS component classes** (`.section-header`, `.section-kicker`, `.section-title`, `.section-subtitle`, `.service-card`, etc.) live in `app/styles/components/` — these are global classes, not Tailwind utilities.
 **Animation changes** → the `useGSAP()` call inside the relevant section component. Import `{ gsap, useGSAP }` (and `ScrollTrigger` if needed) from `@/components/gsap-init`.
 
@@ -123,12 +118,11 @@ Key tokens (defined in `app/styles/tokens/`):
 | `--font-sans` | Inter | |
 | `--font-mono` | JetBrains Mono | |
 
-Global utilities (defined in `app/styles/base/utilities.css`): `.label-mono` (+`--accent`), `.terminal-line`, `.caret-blink`, `.bg-grid`, `.accent-rule`. Use these instead of re-creating the styles per component.
+Global utilities (defined in `app/styles/base/utilities.css`): `.label-mono` (+`--accent`), `.terminal-line`, `.caret-blink`, `.bg-grid`, `.accent-rule`, plus shared `@keyframes status-dot-pulse` (consumed by `StatusDot` via `animate-[status-dot-pulse_…]`). Use these instead of re-creating the styles per component.
 
-- **Buttons** → `<Button href="..." variant="primary|ghost|outline" size="lg" prefix>` (mono lowercase with optional `> ` prefix). Never raw CSS classes.
+- **Buttons** → `<Button href="..." variant="primary|ghost|outline" size="lg" prefix target="_blank">` (mono lowercase with optional `> ` prefix; use `target="_blank"` for external links — `rel="noopener noreferrer"` is applied automatically). Never raw CSS classes.
 - **Section headers** → `<SectionHeader kicker="Servicios" number="01" title={<>…<em>word</em></>} subtitle="…" accentRule />`. Numbered eyebrow is the on-brand pattern; `accentRule` adds the cyan→purple gradient line under the title.
-- **Icons** → import from `@/components/ui/icons` (lucide-react re-export; 20px, 1.5px stroke, currentColor). Typographic glyphs (`>`, `_`, `//`, `✓`, `✗`) are preferred when possible.
-- **Narrative components** (`TerminalPanel`, `StatsHud`, `CodeSnippet`) — used in `components/sections/SystemShowcase.tsx` and composable wherever the hacker aesthetic needs to read loud.
+- **Icons** → import directly from `lucide-react` where needed (20px, 1.5px stroke, currentColor). Typographic glyphs (`>`, `_`, `//`, `✓`, `✗`) are preferred when possible.
 
 The global `em` element is restyled as cyan accent emphasis (`color: var(--color-accent)`, `font-style: normal`) — use `<em>` inside headings to highlight a word.
 

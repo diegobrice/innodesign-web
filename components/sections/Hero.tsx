@@ -1,22 +1,31 @@
 'use client';
 
 import { useRef } from 'react';
-import { StatusDot } from '@/components/ui/StatusDot';
 import { Button } from '@/components/ui/Button';
 import { GridBackdrop } from '@/components/ui/GridBackdrop';
-import { MetricCounter } from '@/components/ui/MetricCounter';
-import { Caret } from '@/components/ui/Caret';
-import { metrics } from '@/data/content';
 import { gsap, useGSAP } from '@/components/gsap-init';
 
 export function Hero() {
   const root = useRef<HTMLElement>(null);
+  const emRef = useRef<HTMLElement>(null);
 
   useGSAP(
     () => {
       const mm = gsap.matchMedia();
 
       mm.add('(prefers-reduced-motion: no-preference)', () => {
+        // Scramble em text immediately so it's never readable before the decode
+        const SCRAMBLE_TARGET = 'crecer tu negocio';
+        const SCRAMBLE_CHARS = '!<>-_/[]{}=+*^?#|@%$';
+        if (emRef.current) {
+          let init = '';
+          for (let i = 0; i < SCRAMBLE_TARGET.length; i++) {
+            init +=
+              SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)];
+          }
+          emRef.current.textContent = init;
+        }
+
         const tl = gsap.timeline({ delay: 0.15 });
         tl.from('.hero__badge', { autoAlpha: 0, y: 14, duration: 0.7 })
           .from(
@@ -43,6 +52,35 @@ export function Hero() {
             '.metric',
             { autoAlpha: 0, y: 24, stagger: 0.12, duration: 0.8 },
             '-=0.5',
+          )
+          .to(
+            { p: 0 },
+            {
+              p: 1,
+              duration: 1.6,
+              ease: 'none',
+              onUpdate() {
+                const el = emRef.current;
+                if (!el) return;
+                const revealed = Math.floor(
+                  this.targets()[0].p * SCRAMBLE_TARGET.length,
+                );
+                let out = '';
+                for (let i = 0; i < SCRAMBLE_TARGET.length; i++) {
+                  out +=
+                    i < revealed
+                      ? SCRAMBLE_TARGET[i]
+                      : SCRAMBLE_CHARS[
+                          Math.floor(Math.random() * SCRAMBLE_CHARS.length)
+                        ];
+                }
+                el.textContent = out;
+              },
+              onComplete() {
+                if (emRef.current) emRef.current.textContent = SCRAMBLE_TARGET;
+              },
+            },
+            0.45,
           );
       });
     },
@@ -62,48 +100,28 @@ export function Hero() {
         </span>
 
         <h1 className="hero__title text-[clamp(2.8rem,6.5vw,5.6rem)] font-bold max-w-[1000px] mx-auto mb-6 tracking-[-0.035em] leading-[1.02]">
-          Construimos productos digitales que hacen <em>crecer tu negocio</em>
+          Construimos productos digitales que hacen{' '}
+          <em ref={emRef}>crecer tu negocio</em>
         </h1>
 
         <p className="hero__subtitle text-[clamp(1rem,1.5vw,1.15rem)] text-text-muted max-w-[580px] mx-auto mb-12 leading-[1.6]">
-          Somos un equipo de ingenieros y diseñadores que transforma ideas en
-          aplicaciones web, móviles y SaaS listas para escalar.
+          Diseñamos soluciones digitales modernas, rápidas y pensadas para
+          generar más clientes y ventas.
         </p>
 
-        <div className="hero__actions flex justify-center flex-wrap gap-3 mb-[120px] max-sm:w-full">
+        <div className="hero__actions flex flex-col items-center gap-4 mb-[120px]">
           <Button
-            href="#contacto"
+            href="https://wa.me/51952369305"
+            target="_blank"
             size="lg"
             prefix
-            className="max-sm:flex-1 max-sm:min-w-[180px]"
+            className="max-sm:w-full max-sm:justify-center"
           >
-            agendar llamada
+            solicitar propuesta
           </Button>
-          <Button
-            href="#portfolio"
-            variant="ghost"
-            size="lg"
-            className="max-sm:flex-1 max-sm:min-w-[180px]"
-          >
-            ver proyectos
-          </Button>
-        </div>
-
-        <div className="grid grid-cols-3 max-w-[900px] mx-auto border-t border-b border-border max-sm:grid-cols-1">
-          {metrics.map((m) => (
-            <div
-              key={m.label}
-              className="metric relative text-left py-9 px-6 border-r border-border last:border-r-0 max-sm:border-r-0 max-sm:border-b max-sm:border-border max-sm:last:border-b-0"
-            >
-              <span className="block uppercase font-mono text-[10px] text-accent tracking-[0.14em] mb-[14px]">
-                {m.label}
-              </span>
-              <strong className="block font-sans text-[clamp(2.2rem,3.5vw,3.2rem)] font-bold tracking-[-0.03em] leading-none mb-2 text-text">
-                <MetricCounter value={m.value} />
-              </strong>
-              <span className="text-text-muted text-[0.85rem]">{m.desc}</span>
-            </div>
-          ))}
+          <span className="font-mono text-[11px] text-text-subtle tracking-[0.1em] uppercase">
+            Asesoría gratuita&nbsp;•&nbsp;Respuesta en menos de 24h
+          </span>
         </div>
       </div>
     </section>

@@ -1,48 +1,21 @@
-export const metrics = [
-  { label: '001 / Proyectos', value: '+80', desc: 'Entregados globalmente' },
-  { label: '002 / Alcance', value: '12', desc: 'Países atendidos' },
-  { label: '003 / Satisfacción', value: '98%', desc: 'Clientes recurrentes' },
-];
-
-export const clients = [
-  'Acme Corp',
-  'Globex',
-  'Initech',
-  'Umbrella',
-  'Stark Industries',
-  'Wayne Enterprises',
-];
-
 export const services = [
   {
     id: '01',
-    title: 'Desarrollo Web',
-    description: 'Sitios y aplicaciones web rápidas, accesibles y optimizadas para SEO con Next.js y React.',
+    title: 'Páginas web profesionales',
+    description:
+      'Diseñamos y desarrollamos tu sitio web desde cero: rápido, seguro y optimizado para que Google te encuentre.',
   },
   {
     id: '02',
-    title: 'Apps Móviles',
-    description: 'Aplicaciones nativas iOS y Android con React Native o Flutter. Una base de código, dos tiendas.',
+    title: 'Tiendas online',
+    description:
+      'Abrimos tu tienda en internet: catálogo de productos, carrito de compras, pagos seguros y gestión de pedidos.',
   },
   {
     id: '03',
-    title: 'Plataformas SaaS',
-    description: 'Productos multi-tenant con autenticación, pagos y paneles. Escalables desde el día uno.',
-  },
-  {
-    id: '04',
-    title: 'E-commerce',
-    description: 'Tiendas online con Shopify, WooCommerce o headless commerce. Optimizadas para vender.',
-  },
-  {
-    id: '05',
-    title: 'UI/UX Design',
-    description: 'Diseño de producto centrado en el usuario. Wireframes, prototipos y sistemas de diseño.',
-  },
-  {
-    id: '06',
-    title: 'Consultoría Técnica',
-    description: 'Auditorías de código, arquitectura y performance. Acompañamos a tu equipo interno.',
+    title: 'Aplicaciones a medida',
+    description:
+      'Sistemas web y móviles con inicio de sesión, pagos y paneles de control. Tu herramienta digital, hecha exactamente para tu negocio.',
   },
 ];
 
@@ -50,138 +23,118 @@ export const processSteps = [
   {
     id: '01',
     title: 'Descubrimiento',
-    description: 'Entendemos tu negocio, tus usuarios y tus objetivos. Definimos alcance, plazos y presupuesto.',
+    description:
+      'Entendemos tu negocio, tus usuarios y tus objetivos. Definimos alcance, plazos y presupuesto.',
   },
   {
     id: '02',
     title: 'Diseño',
-    description: 'Creamos wireframes, prototipos interactivos y el sistema visual del producto.',
+    description:
+      'Creamos wireframes, prototipos interactivos y el sistema visual del producto.',
   },
   {
     id: '03',
     title: 'Desarrollo',
-    description: 'Iteramos en sprints de 2 semanas con demos continuas. Tú ves el avance en tiempo real.',
+    description:
+      'Construimos tu proyecto con demos continuas. Ves el avance en tiempo real y puedes dar feedback.',
   },
   {
     id: '04',
     title: 'Lanzamiento',
-    description: 'Desplegamos, monitoreamos y te acompañamos en la post-venta con soporte dedicado.',
+    description:
+      'Desplegamos, monitoreamos y te acompañamos en la post-venta con soporte dedicado.',
   },
 ];
 
 export const cases = [
   {
     id: 1,
-    tag: 'Fintech · SaaS',
-    title: 'Plataforma de pagos para PyMES',
-    description: 'Reducimos el tiempo de onboarding de 3 días a 15 minutos.',
-    metric: '+240% conversión',
+    tag: 'Arquitectura · Sitio Web',
+    title: 'Arquinea — Presencia digital para un estudio de arquitectura',
+    description:
+      'Diseñamos y desarrollamos el sitio profesional del estudio: galería de proyectos, ficha de servicios y formulario de contacto optimizado para captar nuevos clientes.',
+    metric: 'Presencia digital',
   },
   {
     id: 2,
-    tag: 'E-commerce',
-    title: 'Tienda online de moda sostenible',
-    description: 'Migración a headless commerce y rediseño de checkout.',
-    metric: '+180% ventas',
+    tag: 'Salud · App a medida',
+    title: 'Meditacna — Plataforma de citas médicas',
+    description:
+      'Aplicación web a medida para una clínica privada: reserva online, historial de pacientes y notificaciones automáticas que eliminaron la gestión manual de turnos.',
+    metric: '100% citas online',
   },
   {
     id: 3,
-    tag: 'Mobile · iOS/Android',
-    title: 'App de delivery para restaurantes',
-    description: '50.000 descargas en los primeros 3 meses tras el lanzamiento.',
-    metric: '4.8 ★ rating',
-  },
-  {
-    id: 4,
-    tag: 'HealthTech',
-    title: 'Sistema de citas médicas',
-    description: 'Agenda inteligente con integración a historias clínicas.',
-    metric: '-60% no-shows',
+    tag: 'Educación · App a medida',
+    title: 'CodingLatam — Academia online de tecnología',
+    description:
+      'Plataforma de cursos desarrollada desde cero: catálogo de contenidos, progreso por estudiante, pagos integrados y panel de administración para instructores.',
+    metric: '+1.000 estudiantes activos',
   },
 ];
 
 export const differentiators = [
   {
+    icon: 'MonitorSmartphone',
+    title: 'Responsive Design',
+    description:
+      'Tu página web se verá bien en cualquier dispositivo: celular, tablet o computadora.',
+  },
+  {
+    icon: 'Search',
+    title: 'Posicionamiento en Google',
+    description:
+      'Optimizamos tu sitio para que aparezca en los primeros resultados cuando alguien busca lo que ofreces.',
+  },
+  {
     icon: 'Zap',
-    title: 'Equipo senior',
-    description: 'Sin juniors escondidos. Cada proyecto lo lidera un ingeniero con +5 años de experiencia.',
+    title: 'Carga rápida',
+    description:
+      'Optimizamos tu web para que cargue rápido y no pierdas visitantes.',
   },
   {
-    icon: 'Target',
-    title: 'Entregas predecibles',
-    description: 'Sprints de 2 semanas con demos reales. Sin sorpresas en plazos ni presupuestos.',
-  },
-  {
-    icon: 'Lock',
-    title: 'Código que es tuyo',
-    description: 'Repositorios, documentación y propiedad intelectual desde el día uno. Cero lock-in.',
-  },
-  {
-    icon: 'TrendingUp',
-    title: 'Enfoque en negocio',
-    description: 'Medimos el éxito en tus métricas, no en líneas de código.',
+    icon: 'Users',
+    title: 'Experiencia de Usuario',
+    description:
+      'Diseñamos pensando en quien usa tu producto. Una buena experiencia convierte visitantes en clientes.',
   },
 ] as const;
-
-export const testimonials = [
-  {
-    id: 1,
-    quote:
-      '"innodesign entregó nuestro MVP en 10 semanas. Levantamos la siguiente ronda de inversión gracias a la tracción que generamos con su producto."',
-    author: 'María González',
-    role: 'CEO, FinPay',
-  },
-  {
-    id: 2,
-    quote:
-      '"El equipo entiende de negocio, no solo de código. Nos retaron en las decisiones correctas y el resultado fue un producto mucho mejor."',
-    author: 'Carlos Ramírez',
-    role: 'CTO, ShopLink',
-  },
-  {
-    id: 3,
-    quote:
-      '"Comunicación impecable y cumplimiento de plazos al 100%. Llevamos 3 proyectos juntos y no pensamos cambiar."',
-    author: 'Laura Méndez',
-    role: 'Product Lead, HealthOne',
-  },
-];
 
 export const faqs = [
   {
     id: 1,
-    question: '¿Cuánto cuesta desarrollar un producto con ustedes?',
+    question: '¿Cuánto cuesta hacer una página web o app con ustedes?',
     answer:
-      'El costo depende del alcance. Un MVP suele ir desde $15.000 USD y una plataforma completa supera los $60.000 USD. Te damos un estimado en la primera llamada.',
+      'Depende de lo que necesitas. Una página web informativa parte desde $1.500 USD. Una tienda online o app móvil puede ir entre $3.000 y $15.000 USD. Te damos un presupuesto detallado gratis en la primera llamada, sin compromisos.',
   },
   {
     id: 2,
-    question: '¿Cuánto tiempo toma un proyecto promedio?',
+    question: '¿Cuánto tiempo tarda un proyecto?',
     answer:
-      'Un MVP se entrega en 8 a 12 semanas. Proyectos más complejos pueden extenderse entre 4 y 6 meses, divididos en sprints quincenales.',
+      'Una página web lista en 2 a 4 semanas. Una tienda online o sistema web a medida puede tomar entre 6 y 12 semanas, dependiendo de la complejidad. Trabajamos en entregas parciales para que puedas ver el avance.',
   },
   {
     id: 3,
-    question: '¿Trabajan con startups o solo con empresas grandes?',
+    question: '¿Trabajan con negocios pequeños o solo con empresas grandes?',
     answer:
-      'Ambos. Tenemos planes para startups en etapa semilla y también para empresas consolidadas que quieren modernizar su stack.',
+      'Con ambos. Si estás empezando y necesitas tu primera presencia online, o si ya tienes un negocio y quieres crecer digitalmente, podemos ayudarte. Adaptamos el proyecto a tu presupuesto y objetivos.',
   },
   {
     id: 4,
-    question: '¿Qué tecnologías usan?',
+    question: '¿Necesito saber de tecnología para trabajar con ustedes?',
     answer:
-      'Next.js, React, React Native, Node.js, Python, PostgreSQL y AWS como base. Elegimos el stack según las necesidades de cada proyecto.',
+      'Para nada. Nos encargamos de todo lo técnico y te explicamos cada decisión en palabras sencillas. Tu trabajo es decirnos qué necesita tu negocio, el nuestro es hacerlo realidad.',
   },
   {
     id: 5,
-    question: '¿Ofrecen soporte y mantenimiento post-lanzamiento?',
+    question: '¿Me dan soporte después de que esté listo el proyecto?',
     answer:
-      'Sí. Tenemos planes mensuales de mantenimiento, nuevas features y monitoreo 24/7 si tu producto lo requiere.',
+      'Sí. Ofrecemos mantenimiento mensual: actualizaciones, correcciones y mejoras continuas. También te enseñamos a gestionar el contenido de tu sitio si lo deseas.',
   },
   {
     id: 6,
-    question: '¿El código es mío al terminar el proyecto?',
+    question: '¿El sitio o app me pertenece al terminar?',
     answer:
-      'Siempre. Entregamos el repositorio, la documentación y todas las credenciales. Sin dependencias ocultas ni contratos de lock-in.',
+      'Siempre. Todo el código, el diseño y los accesos son tuyos desde el primer día. Sin contratos de dependencia ni costos ocultos.',
   },
 ];

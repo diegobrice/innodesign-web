@@ -28,22 +28,20 @@
   }
 
   .terminal-line::before {
-    content: "> ";
+    content: '> ';
     color: var(--color-accent);
   }
 
-  /* Blinking caret signature — appears after wordmark / headlines. */
-  .caret-blink {
-    display: inline-block;
-    color: var(--color-accent);
-    font-weight: var(--font-weight-bold);
-    margin-left: 0.04em;
-    animation: caret-blink 1.1s steps(2, end) infinite;
-  }
-
+  /* Caret pulse — soft fade for the `_` signature (used by Caret via
+     animate-[caret-blink_…]). Eased instead of stepped so the color
+     breathes rather than snapping on/off. */
   @keyframes caret-blink {
+    0%,
+    100% {
+      opacity: 1;
+    }
     50% {
-      opacity: 0;
+      opacity: 0.18;
     }
   }
 
@@ -62,7 +60,11 @@
     display: block;
     height: 2px;
     width: 120px;
-    background: linear-gradient(90deg, var(--color-accent), var(--color-accent-3));
+    background: linear-gradient(
+      90deg,
+      var(--color-accent),
+      var(--color-accent-3)
+    );
     border: 0;
     margin: 0;
   }
@@ -70,7 +72,8 @@
 
 /* Respect reduced motion — disable the blinking caret. */
 @media (prefers-reduced-motion: reduce) {
-  .caret-blink {
-    animation: none;
+  [class*='status-dot-pulse'],
+  [class*='caret-blink'] {
+    animation: none !important;
   }
 }

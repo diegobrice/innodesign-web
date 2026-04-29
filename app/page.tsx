@@ -1,14 +1,11 @@
 import { Navbar } from '@/components/sections/Navbar';
 import { Hero } from '@/components/sections/Hero';
-import { Clients } from '@/components/sections/Clients';
 import { Services } from '@/components/sections/Services';
 import { Process } from '@/components/sections/Process';
 import { Portfolio } from '@/components/sections/Portfolio';
 import { WhyUs } from '@/components/sections/WhyUs';
-import { Testimonials } from '@/components/sections/Testimonials';
 import { FAQ } from '@/components/sections/FAQ';
 import { FinalCTA } from '@/components/sections/FinalCTA';
-import { SystemShowcase } from '@/components/sections/SystemShowcase';
 import { Footer } from '@/components/sections/Footer';
 
 export default function Home() {
@@ -17,15 +14,12 @@ export default function Home() {
       <Navbar />
       <main id="contenido">
         <Hero />
-        <Clients />
+        <WhyUs />
         <Services />
         <Process />
         <Portfolio />
-        <WhyUs />
-        <Testimonials />
         <FAQ />
         <FinalCTA />
-        <SystemShowcase />
       </main>
       <Footer />
     </>
