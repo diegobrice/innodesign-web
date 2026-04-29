@@ -51,7 +51,6 @@ export function SystemShowcase() {
           number="08"
           title={<>Directos. Técnicos. <em>Enfocados en valor.</em></>}
           subtitle="Así pensamos por dentro. Código con intención, sistemas escalables y métricas que hablan por sí solas."
-          accentRule
         />
 
         <div className="showcase__grid grid grid-cols-2 gap-8 max-lg:grid-cols-1">

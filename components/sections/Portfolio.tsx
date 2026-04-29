@@ -43,7 +43,6 @@ export function Portfolio() {
           number="03"
           title="Casos de éxito recientes"
           subtitle="Resultados medibles para clientes de distintos sectores."
-          accentRule
         />
 
         <div className="portfolio__grid grid grid-cols-2 gap-6 max-lg:grid-cols-1">

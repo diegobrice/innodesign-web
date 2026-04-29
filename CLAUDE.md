@@ -10,6 +10,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 pnpm dev          # start dev server (Turbopack)
 pnpm build        # production build
 pnpm lint         # ESLint (eslint.config.mjs, Next.js config)
+pnpm typecheck    # tsc --noEmit (type-check without emitting)
 ```
 
 No test suite is configured.
@@ -65,6 +66,8 @@ data/
   content.ts   # all copy: metrics, clients, services, process, cases, differentiators, testimonials, FAQs
   site.ts      # site URL, name, description; brand palette as JS constants (used in edge-runtime image routes)
 ```
+
+**Path alias** → `@/*` resolves to the project root (e.g. `@/components/gsap-init`). Defined in `tsconfig.json`.
 
 **Content changes** → `data/content.ts` only.
 **Site metadata** → `data/site.ts` (also the source of truth for brand hex values in `opengraph-image.tsx` and `icon.tsx`, where CSS variables can't be resolved).

@@ -41,7 +41,6 @@ export function Process() {
           number="02"
           title="Cómo trabajamos contigo"
           subtitle="Un método probado en +80 proyectos para entregar a tiempo y sin sorpresas."
-          accentRule
         />
 
         <ul className="process__steps grid grid-cols-4 max-lg:grid-cols-2 max-sm:grid-cols-1 gap-px bg-border border border-border">

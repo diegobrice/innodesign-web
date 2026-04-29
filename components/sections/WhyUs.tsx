@@ -43,7 +43,6 @@ export function WhyUs() {
           kicker="Diferenciadores"
           number="04"
           title="Más que una agencia, un socio técnico"
-          accentRule
         />
 
         <div className="why__grid grid grid-cols-4 max-lg:grid-cols-2 max-sm:grid-cols-1 gap-12">

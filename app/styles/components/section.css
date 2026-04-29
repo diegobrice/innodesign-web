@@ -28,15 +28,6 @@
     margin-block: 1.25rem 0;
   }
 
-  .section-accent-rule {
-    margin-top: 1.25rem;
-  }
-
-  .section-header--center .section-accent-rule {
-    display: flex;
-    justify-content: center;
-  }
-
   .section-subtitle {
     max-width: 580px;
     margin-top: 1.25rem;

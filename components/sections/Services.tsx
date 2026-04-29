@@ -42,7 +42,6 @@ export function Services() {
           number="01"
           title="Todo lo que necesitas para lanzar tu producto"
           subtitle="Desde la primera línea de código hasta el despliegue en producción."
-          accentRule
         />
 
         <div className="services__grid grid grid-cols-3 max-lg:grid-cols-2 max-sm:grid-cols-1 gap-px bg-border border border-border">

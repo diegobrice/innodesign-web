@@ -40,7 +40,6 @@ export function Testimonials() {
           kicker="Testimonios"
           number="05"
           title="Lo que dicen nuestros clientes"
-          accentRule
         />
 
         <div className="testimonials__grid grid grid-cols-3 max-lg:grid-cols-2 max-sm:grid-cols-1 gap-6">

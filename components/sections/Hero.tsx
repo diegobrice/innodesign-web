@@ -6,7 +6,6 @@ import { Button } from '@/components/ui/Button';
 import { GridBackdrop } from '@/components/ui/GridBackdrop';
 import { MetricCounter } from '@/components/ui/MetricCounter';
 import { Caret } from '@/components/ui/Caret';
-import { AccentRule } from '@/components/ui/AccentRule';
 import { metrics } from '@/data/content';
 import { gsap, useGSAP } from '@/components/gsap-init';
 
@@ -20,14 +19,34 @@ export function Hero() {
       mm.add('(prefers-reduced-motion: no-preference)', () => {
         const tl = gsap.timeline({ delay: 0.15 });
         tl.from('.hero__badge', { autoAlpha: 0, y: 14, duration: 0.7 })
-          .from('.hero__title', { autoAlpha: 0, y: 28, duration: 1.1, ease: 'power4.out' }, '-=0.4')
-          .from('.hero__rule', { scaleX: 0, transformOrigin: 'left', duration: 0.6 }, '-=0.5')
-          .from('.hero__subtitle', { autoAlpha: 0, y: 18, duration: 0.8 }, '-=0.7')
-          .from('.hero__actions > *', { autoAlpha: 0, y: 16, stagger: 0.1, duration: 0.7 }, '-=0.6')
-          .from('.metric', { autoAlpha: 0, y: 24, stagger: 0.12, duration: 0.8 }, '-=0.5');
+          .from(
+            '.hero__title',
+            { autoAlpha: 0, y: 28, duration: 1.1, ease: 'power4.out' },
+            '-=0.4',
+          )
+          .from(
+            '.hero__rule',
+            { scaleX: 0, transformOrigin: 'left', duration: 0.6 },
+            '-=0.5',
+          )
+          .from(
+            '.hero__subtitle',
+            { autoAlpha: 0, y: 18, duration: 0.8 },
+            '-=0.7',
+          )
+          .from(
+            '.hero__actions > *',
+            { autoAlpha: 0, y: 16, stagger: 0.1, duration: 0.7 },
+            '-=0.6',
+          )
+          .from(
+            '.metric',
+            { autoAlpha: 0, y: 24, stagger: 0.12, duration: 0.8 },
+            '-=0.5',
+          );
       });
     },
-    { scope: root }
+    { scope: root },
   );
 
   return (
@@ -39,18 +58,12 @@ export function Hero() {
 
       <div className="container relative z-[1]">
         <span className="hero__badge inline-flex items-center gap-[10px] font-mono text-[11px] text-accent tracking-[0.14em] uppercase mb-9">
-          <StatusDot />
-          <span>&gt; AGENCIA DE DESARROLLO DE SOFTWARE</span>
+          <span>AGENCIA DE DESARROLLO DE SOFTWARE</span>
         </span>
 
         <h1 className="hero__title text-[clamp(2.8rem,6.5vw,5.6rem)] font-bold max-w-[1000px] mx-auto mb-6 tracking-[-0.035em] leading-[1.02]">
-          Construimos productos digitales que hacen <em>crecer</em> tu negocio
-          <Caret />
+          Construimos productos digitales que hacen <em>crecer tu negocio</em>
         </h1>
-
-        <div className="hero__rule flex justify-center mb-7">
-          <AccentRule width={140} />
-        </div>
 
         <p className="hero__subtitle text-[clamp(1rem,1.5vw,1.15rem)] text-text-muted max-w-[580px] mx-auto mb-12 leading-[1.6]">
           Somos un equipo de ingenieros y diseñadores que transforma ideas en

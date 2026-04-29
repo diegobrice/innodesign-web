@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { StatusDot } from '@/components/ui/StatusDot';
 import { Button } from '@/components/ui/Button';
 import { Caret } from '@/components/ui/Caret';
 
@@ -23,7 +22,7 @@ export function Navbar() {
           if (entry.isIntersecting) setActiveSection(entry.target.id);
         });
       },
-      { rootMargin: '-20% 0px -70% 0px' }
+      { rootMargin: '-20% 0px -70% 0px' },
     );
 
     NAV_LINKS.forEach(({ href }) => {
@@ -66,10 +65,6 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center gap-4">
-          <StatusDot />
-          <span className="font-mono text-[11px] text-text-subtle tracking-[0.08em] uppercase max-lg:hidden">
-            Disponibles · Q3 2026
-          </span>
           <Button href="#contacto" variant="ghost" prefix>
             contactar
           </Button>
