@@ -54,6 +54,7 @@ export const cases = [
     description:
       'Diseñamos y desarrollamos el sitio profesional del estudio: galería de proyectos, ficha de servicios y formulario de contacto optimizado para captar nuevos clientes.',
     metric: 'Presencia digital',
+    image: '/images/arquinea.webp',
   },
   {
     id: '02',
@@ -62,6 +63,7 @@ export const cases = [
     description:
       'Aplicación web a medida para una clínica privada: reserva online, historial de pacientes y notificaciones automáticas que eliminaron la gestión manual de turnos.',
     metric: '100% citas online',
+    image: '/images/meditacna.webp',
   },
   {
     id: '03',
@@ -70,6 +72,7 @@ export const cases = [
     description:
       'Plataforma de cursos desarrollada desde cero: catálogo de contenidos, progreso por estudiante, pagos integrados y panel de administración para instructores.',
     metric: '+1.000 estudiantes activos',
+    image: '/images/coding-latam.webp',
   },
 ];
 

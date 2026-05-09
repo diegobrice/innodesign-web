@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef } from 'react';
+import Image from 'next/image';
 import { cases } from '@/data/content';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { ArrowRight } from 'lucide-react';
@@ -36,10 +37,15 @@ export function Portfolio() {
               key={c.id}
               className="case-card p-6 bg-bg-card border border-border rounded-[var(--radius)] transition-[border-color,background-color] duration-200 hover:border-border-strong hover:bg-bg-inset"
             >
-              <div
-                className="case-card__preview w-full h-[240px] border border-border rounded-[var(--radius-sm)] mb-6 bg-grid"
-                aria-hidden="true"
-              />
+              <div className="case-card__preview relative w-full h-[240px] border border-border rounded-[var(--radius-sm)] mb-6 overflow-hidden">
+                <Image
+                  src={c.image}
+                  alt={c.title}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+              </div>
               <span className="inline-flex items-center rounded-pill uppercase px-[10px] py-[4px] bg-bg border border-border font-mono text-[12px] text-text-subtle tracking-[0.14em] mb-[14px]">
                 {c.tag}
               </span>
@@ -57,6 +63,27 @@ export function Portfolio() {
               </strong>
             </article>
           ))}
+
+          <article className="case-card group flex flex-col items-center justify-center gap-6 p-6 min-h-[420px] border border-dashed border-border rounded-[var(--radius)] transition-[border-color,background-color] duration-200 hover:border-accent/40 hover:bg-bg-inset text-center cursor-default">
+            <span className="font-mono text-[14px] text-text-subtle tracking-[0.18em] uppercase">
+              // próximamente
+            </span>
+            <h3 className="text-[2rem] font-medium tracking-[-0.02em] text-text-muted group-hover:text-text transition-colors duration-200">
+              Tu proyecto
+              <br />
+              <em>finalizado aquí.</em>
+            </h3>
+            <p className="text-text-subtle text-md max-w-[260px] leading-relaxed">
+              Cuentanos qué necesitas y lo construimos juntos.
+            </p>
+            <a
+              href="#contacto"
+              className="inline-flex items-center gap-2 font-mono text-md text-accent hover:text-accent-hover transition-colors duration-150"
+            >
+              <ArrowRight size={16} strokeWidth={1.5} className="opacity-60" />
+              Hablemos
+            </a>
+          </article>
         </div>
       </div>
     </section>
