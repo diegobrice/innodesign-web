@@ -7,8 +7,8 @@ import { gsap, useGSAP } from '@/components/gsap-init';
 
 export function FAQ() {
   const root = useRef<HTMLElement>(null);
-  const [openId, setOpenId] = useState<string | null>(null);
-  const answerRefs = useRef<Record<string, HTMLDivElement | null>>({});
+  const [openId, setOpenId] = useState<number | null>(null);
+  const answerRefs = useRef<Record<number, HTMLDivElement | null>>({});
 
   useGSAP(() => {
     const mm = gsap.matchMedia();
@@ -24,7 +24,7 @@ export function FAQ() {
     });
   }, { scope: root });
 
-  function toggle(id: string) {
+  function toggle(id: number) {
     const el = answerRefs.current[id];
     if (!el) return;
 
