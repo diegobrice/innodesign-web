@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/Button';
 import { Caret } from '@/components/ui/Caret';
+import { site } from '@/data/site';
 
 const NAV_LINKS = [
   { href: '#servicios', label: 'Servicios' },
@@ -64,7 +65,13 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center gap-4">
-          <Button href="https://wa.me/51952369305" target="_blank" variant="ghost" prefix>
+          <Button
+            href={site.whatsapp}
+            target="_blank"
+            variant="ghost"
+            prefix
+            className="w-35"
+          >
             contactar
           </Button>
         </div>

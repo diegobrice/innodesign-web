@@ -5,6 +5,7 @@ interface SectionHeaderProps {
   title: ReactNode;
   subtitle?: ReactNode;
   align?: 'center' | 'start';
+  className?: string;
 }
 
 export function SectionHeader({
@@ -12,9 +13,10 @@ export function SectionHeader({
   title,
   subtitle,
   align = 'center',
+  className,
 }: SectionHeaderProps) {
   return (
-    <div className={`section-header section-header--${align}`}>
+    <div className={[`section-header section-header--${align}`, className].filter(Boolean).join(' ')}>
       <span className="section-kicker label-mono label-mono--accent">
         {kicker}
       </span>

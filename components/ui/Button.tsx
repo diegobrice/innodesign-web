@@ -14,7 +14,7 @@ interface ButtonProps {
 }
 
 const base =
-  'relative inline-flex items-center justify-center gap-[0.4rem] cursor-pointer whitespace-nowrap rounded-sm font-mono text-[13px] font-medium tracking-[0.06em] lowercase border border-transparent no-underline transition-[background-color,border-color,color,box-shadow] duration-[180ms] ease-[cubic-bezier(0.2,0.7,0.2,1)]';
+  'relative inline-flex items-center justify-center gap-[0.4rem] cursor-pointer whitespace-nowrap rounded-sm font-mono text-base font-medium tracking-[0.06em] lowercase border no-underline transition-[background-color,border-color,color,box-shadow] duration-[180ms] ease-[cubic-bezier(0.2,0.7,0.2,1)]';
 
 const variants: Record<NonNullable<ButtonProps['variant']>, string> = {
   primary:
@@ -26,7 +26,7 @@ const variants: Record<NonNullable<ButtonProps['variant']>, string> = {
 };
 
 const sizes = {
-  lg: 'px-6 py-[14px] text-[14px]',
+  lg: 'px-6 py-[14px] text-base',
 } as const;
 
 const paddingDefault = 'px-[18px] py-[10px]';

@@ -8,6 +8,7 @@ export const site = {
     'Agencia de desarrollo de software. Creamos productos digitales que transforman negocios. Desarrollo web, apps móviles, SaaS y consultoría técnica.',
   tagline: 'Construimos productos digitales que hacen crecer tu negocio.',
   ogSummary: 'Construimos productos digitales que hacen crecer tu negocio. +80 proyectos entregados globalmente.',
+  whatsapp: 'https://wa.me/51952369305',
 } as const;
 
 /**

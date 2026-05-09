@@ -49,9 +49,10 @@ components/
     StatusChip.tsx    # mono pill with dot (success/warning/danger/muted)
     BracketFrame.tsx  # 4-corner accent frame (decorative)
     GridBackdrop.tsx  # 32px cyan grid overlay (hero/cta variants)
-    SectionHeader.tsx # numbered kicker + h2 + optional AccentRule + subtitle
+    SectionHeader.tsx # kicker + h2 + optional subtitle
     Caret.tsx         # blinking `_` signature (uses global .caret-blink)
     useScrambleHover.ts  # hook used by Button label hover scramble
+    useSectionReveal.ts  # shared hook: section-header entrance + custom animateFn, wrapped in matchMedia reduced-motion guard
 
 data/
   content.ts   # all copy: services, process steps, cases (portfolio), differentiators, testimonials, FAQs
@@ -121,7 +122,7 @@ Key tokens (defined in `app/styles/tokens/`):
 Global utilities (defined in `app/styles/base/utilities.css`): `.label-mono` (+`--accent`), `.terminal-line`, `.caret-blink`, `.bg-grid`, `.accent-rule`, plus shared `@keyframes status-dot-pulse` (consumed by `StatusDot` via `animate-[status-dot-pulse_…]`). Use these instead of re-creating the styles per component.
 
 - **Buttons** → `<Button href="..." variant="primary|ghost|outline" size="lg" prefix target="_blank">` (mono lowercase with optional `> ` prefix; use `target="_blank"` for external links — `rel="noopener noreferrer"` is applied automatically). Never raw CSS classes.
-- **Section headers** → `<SectionHeader kicker="Servicios" number="01" title={<>…<em>word</em></>} subtitle="…" accentRule />`. Numbered eyebrow is the on-brand pattern; `accentRule` adds the cyan→purple gradient line under the title.
+- **Section headers** → `<SectionHeader kicker="Servicios" title={<>…<em>word</em></>} subtitle="…" align="center|start" />`. Props: `kicker` (eyebrow label), `title` (accepts JSX with `<em>` for accent), `subtitle` (optional), `align` (default `"center"`).
 - **Icons** → import directly from `lucide-react` where needed (20px, 1.5px stroke, currentColor). Typographic glyphs (`>`, `_`, `//`, `✓`, `✗`) are preferred when possible.
 
 The global `em` element is restyled as cyan accent emphasis (`color: var(--color-accent)`, `font-style: normal`) — use `<em>` inside headings to highlight a word.

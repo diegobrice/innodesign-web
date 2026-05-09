@@ -17,7 +17,7 @@ export function StatusChip({ tone = 'success', children, className }: StatusChip
   return (
     <span
       className={[
-        'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-pill bg-bg border border-border font-mono text-[10px] tracking-[0.08em] text-text-subtle lowercase',
+        'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-pill bg-bg border border-border font-mono text-base tracking-[0.08em] text-text-subtle lowercase',
         className,
       ]
         .filter(Boolean)

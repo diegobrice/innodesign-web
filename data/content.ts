@@ -48,7 +48,7 @@ export const processSteps = [
 
 export const cases = [
   {
-    id: 1,
+    id: '01',
     tag: 'Arquitectura · Sitio Web',
     title: 'Arquinea — Presencia digital para un estudio de arquitectura',
     description:
@@ -56,7 +56,7 @@ export const cases = [
     metric: 'Presencia digital',
   },
   {
-    id: 2,
+    id: '02',
     tag: 'Salud · App a medida',
     title: 'Meditacna — Plataforma de citas médicas',
     description:
@@ -64,7 +64,7 @@ export const cases = [
     metric: '100% citas online',
   },
   {
-    id: 3,
+    id: '03',
     tag: 'Educación · App a medida',
     title: 'CodingLatam — Academia online de tecnología',
     description:
@@ -103,36 +103,30 @@ export const differentiators = [
 export const faqs = [
   {
     id: 1,
-    question: '¿Cuánto cuesta hacer una página web o app con ustedes?',
-    answer:
-      'Depende de lo que necesitas. Una página web informativa parte desde $1.500 USD. Una tienda online o app móvil puede ir entre $3.000 y $15.000 USD. Te damos un presupuesto detallado gratis en la primera llamada, sin compromisos.',
-  },
-  {
-    id: 2,
     question: '¿Cuánto tiempo tarda un proyecto?',
     answer:
       'Una página web lista en 2 a 4 semanas. Una tienda online o sistema web a medida puede tomar entre 6 y 12 semanas, dependiendo de la complejidad. Trabajamos en entregas parciales para que puedas ver el avance.',
   },
   {
-    id: 3,
+    id: 2,
     question: '¿Trabajan con negocios pequeños o solo con empresas grandes?',
     answer:
       'Con ambos. Si estás empezando y necesitas tu primera presencia online, o si ya tienes un negocio y quieres crecer digitalmente, podemos ayudarte. Adaptamos el proyecto a tu presupuesto y objetivos.',
   },
   {
-    id: 4,
+    id: 3,
     question: '¿Necesito saber de tecnología para trabajar con ustedes?',
     answer:
       'Para nada. Nos encargamos de todo lo técnico y te explicamos cada decisión en palabras sencillas. Tu trabajo es decirnos qué necesita tu negocio, el nuestro es hacerlo realidad.',
   },
   {
-    id: 5,
+    id: 4,
     question: '¿Me dan soporte después de que esté listo el proyecto?',
     answer:
       'Sí. Ofrecemos mantenimiento mensual: actualizaciones, correcciones y mejoras continuas. También te enseñamos a gestionar el contenido de tu sitio si lo deseas.',
   },
   {
-    id: 6,
+    id: 5,
     question: '¿El sitio o app me pertenece al terminar?',
     answer:
       'Siempre. Todo el código, el diseño y los accesos son tuyos desde el primer día. Sin contratos de dependencia ni costos ocultos.',

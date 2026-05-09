@@ -4,6 +4,7 @@ import { useRef } from 'react';
 import { Button } from '@/components/ui/Button';
 import { BracketFrame } from '@/components/ui/BracketFrame';
 import { gsap, useGSAP } from '@/components/gsap-init';
+import { site } from '@/data/site';
 
 export function FinalCTA() {
   const root = useRef<HTMLElement>(null);
@@ -45,20 +46,20 @@ export function FinalCTA() {
             </p>
             <div className="flex justify-center flex-wrap gap-3 max-sm:w-full">
               <Button
-                href="https://wa.me/51952369305"
+                href={site.whatsapp}
                 target="_blank"
                 size="lg"
                 prefix
-                className="max-sm:flex-1 max-sm:min-w-[180px]"
+                className="max-sm:flex-1 w-55"
               >
                 agendar llamada
               </Button>
               <Button
-                href="https://wa.me/51952369305"
+                href={site.whatsapp}
                 target="_blank"
                 variant="ghost"
                 size="lg"
-                className="max-sm:flex-1 max-sm:min-w-[180px]"
+                className="max-sm:flex-1 w-55"
               >
                 escribir por WhatsApp
               </Button>
