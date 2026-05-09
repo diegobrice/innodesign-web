@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'es_ES',
-    url: '/',
+    url: site.url,
     siteName: site.name,
     title: site.title,
     description: site.ogSummary,
@@ -49,6 +49,7 @@ export const metadata: Metadata = {
         width: 1200,
         height: 630,
         alt: site.title,
+        type: 'image/png',
       },
     ],
   },
