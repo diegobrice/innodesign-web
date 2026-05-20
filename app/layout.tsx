@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Inter, Chakra_Petch } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { brand, site } from '@/data/site';
 import './globals.css';
@@ -132,6 +133,7 @@ export default function RootLayout({
           Saltar al contenido principal
         </a>
         {children}
+        <Analytics />
         <SpeedInsights />
       </body>
     </html>
